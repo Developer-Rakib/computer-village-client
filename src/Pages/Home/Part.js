@@ -6,10 +6,10 @@ const part = ({ part }) => {
         <div  className='w-[350px] border hover:shadow-2xl transition text-secondary px-2 py-5 m-8 rounded'>
             <img className='h-[230px] mx-auto' src={img} alt="" />
             <div>
-                <h5  style={{fontFamily:'Roboto', letterSpacing:'1px',fontSize:'1.1rem' }} className="uppercase">{name}</h5>
+                <h5  style={{fontFamily:'Roboto', letterSpacing:'1px',fontSize:'1.1rem' }} className="uppercase font-semibold text-gray-500">{name}</h5>
                 <h6 className="text-2xl mt-1 font-semibold">${price}</h6>
-                <p style={{fontFamily:'Open Sans,sans-serif'}} className='italic text-sm px-4 py-2'>{description.slice(0,100)}</p>
-                <div className='px-5 pt- mb-5 mx-2'>
+                <p style={{fontFamily:'Open Sans,sans-serif'}} className=' text-sm px-4 py-2'>{description.slice(0,100)}</p>
+                <div  style={{fontFamily:'Open Sans,sans-serif'}}  className='px-5 pt- mb-5 mx-2'>
                     <div className='flex justify-between px-2 border-b py-1'>
                         <h5>Minimum Order Qunatity</h5>
                         <h5>{minimumOrderQuanity}</h5>

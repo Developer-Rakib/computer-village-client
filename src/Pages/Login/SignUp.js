@@ -78,7 +78,7 @@ const SignUp = () => {
                         {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
 
-                    <input className='input input-bordered input-md my-0.5' placeholder='Email'{...register("file", {
+                    <input className='input input-bordered input-md my-0.5' placeholder='Email'{...register("email", {
                         required: {
                             value: true,
                             message: 'Email is Required'
@@ -108,7 +108,8 @@ const SignUp = () => {
                         {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                     </label>
 
-                    <input className='font-semibold bg-primary text-white border border-primary hover:bg-white hover:text-gray-700  transition-all cursor-pointer rounded-md py-3 ' value={"SIGN UP"} type="submit" />
+                    <input
+                     style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}}  className='font-semibold bg-primary text-white border border-primary hover:bg-white hover:text-gray-700  transition-all cursor-pointer rounded-md py-3 ' value={"SIGN UP"} type="submit" />
                 </form>
                 <div className='w-9/12 mx-auto'>
                     <small className='mt-4 mx-2 inline-block'>Aleady Have Account ? <Link className='text-primary font-semibold' to={"/login"}>Log in</Link></small>

@@ -10,7 +10,7 @@ const Parts = () => {
         setParts(data.data)
     })
     },[])
-    console.log(parts);
+    // console.log(parts);
     return (
         <div className='my-10 sm:px-10'>
             <div className='flex justify-evenly flex-wrap'>
