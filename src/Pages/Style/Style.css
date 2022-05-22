@@ -1,13 +1,12 @@
 .header-container {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
-    background: white;
+    background: rgba(255, 253, 253, 0.699);
 
 
 }
 
 .header-container nav {
-    /* background: white; */
 }
 
 
