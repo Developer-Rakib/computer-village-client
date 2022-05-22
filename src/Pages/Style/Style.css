@@ -1,0 +1,49 @@
+.header-container {
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    background: white;
+
+
+}
+
+.header-container nav {
+    /* background: white; */
+}
+
+
+.header-container nav ul {
+    border-radius: 5px;
+    
+}
+
+.header-container nav ul a {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 8px;
+    padding: 0 10px;
+}
+
+
+.activeLink {
+    border-bottom: 2px solid #f15048;
+}
+
+
+/* responsive  */
+@media (max-width:850px) {
+    .header-container nav ul a {
+        padding: 5px 0px;
+        width: 40%;
+        /* display: inline-block; */
+        margin: 6px auto;
+    }
+    .header-container nav ul {
+        background-color: #f15048;
+        color: white;
+    }
+    .activeLink {
+        border-bottom: 2px solid white;
+    }
+
+
+}
