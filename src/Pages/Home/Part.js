@@ -20,7 +20,7 @@ const part = ({ part }) => {
                 </div>
                 </div>
             </div>
-            <button class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-10 py-2">Buy Now</button>
+            <button style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-10 py-2">Buy Now</button>
         </div>
     );
 };
