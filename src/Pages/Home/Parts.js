@@ -12,7 +12,7 @@ const Parts = () => {
     },[])
     console.log(parts);
     return (
-        <div className='my-10'>
+        <div className='my-10 sm:px-10'>
             <div className='flex justify-evenly flex-wrap'>
                 {
                     parts.map( (part, i) => <Part

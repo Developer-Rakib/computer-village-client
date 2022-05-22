@@ -9,7 +9,7 @@ const BussinesSummury = () => {
         <div className='flex justify-evenly Container'>
             <div  style={{fontFamily:'Open Sans', boxShadow:'rgba(0, 0, 0, 0.16) 0px 1px 4px'}} className='flex px-6 py-6 rounded-xl m-2 justify-center items-center'>
                 <FaTools className='text-primary text-5xl'></FaTools>
-                <h1 className="text-4xl ml-3">50+ Tools</h1>
+                <h1 className="text-4xl ml-3">50+ Parts</h1>
             </div>
             <div style={{fontFamily:'Open Sans', boxShadow:'rgba(0, 0, 0, 0.16) 0px 1px 4px'}} className='flex px-6 py-6 rounded-xl m-2 justify-center items-center'>
                 <MdReviews className='text-primary text-5xl'></MdReviews>
@@ -17,7 +17,7 @@ const BussinesSummury = () => {
             </div>
             <div style={{fontFamily:'Open Sans', boxShadow:'rgba(0, 0, 0, 0.16) 0px 1px 4px'}} className='flex px-6 py-6 rounded-xl m-2 justify-center items-center'>
                 <RiCustomerService2Fill className='text-primary text-5xl'></RiCustomerService2Fill>
-                <h1 className="text-4xl ml-3">50+ Tools</h1>
+                <h1 className="text-4xl ml-3">100M+ Customers</h1>
             </div>
         </div>
     );

@@ -2,8 +2,6 @@
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     background: rgba(255, 253, 253, 0.799);
-
-
 }
 
 .header-container nav {
@@ -27,6 +25,42 @@
     border-bottom: 2px solid #f15048;
 }
 
+/* review */
+.reveiw {
+    width: 351px;
+    height: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.reveiw p {
+    color: rgba(108, 108, 108, 1);
+    letter-spacing: 0.2px;
+    line-height: 23px;
+    font-weight: 400;
+}
+
+.reveiw h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(12, 25, 32, 1);
+}
+
+.reveiw img {
+    width: 83px;
+    margin: 10px auto;
+    border-radius: 50%;
+    height: 83px;
+}
+
+.reveiw h4 {
+    color: #747474;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
 
 /* responsive  */
 @media (max-width:850px) {
@@ -44,5 +78,17 @@
         border-bottom: 2px solid white;
     }
 
+    .reveiw {
+        width: 300px;
+        height: auto;
+        border-radius: 11px;
+        padding: 18px;
+    }
+
+    .reveiw img {
+        width: 70px;
+        margin: 10px auto;
+        height: 70px;
+    }
 
 }
