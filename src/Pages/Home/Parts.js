@@ -1,9 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Part from './Part';
 
 const Parts = () => {
+    const [parts, setParts]= useState([])
+    useEffect( ()=>{
+        axios.get('parts.json')
+    .then(data => {
+        setParts(data.data)
+    })
+    },[])
+    console.log(parts);
     return (
-        <div>
-            this is parts
+        <div className='my-10'>
+            <div className='flex justify-evenly flex-wrap'>
+                {
+                    parts.map( (part, i) => <Part
+                    key={i}
+                    part={part}
+                    ></Part>)
+                }
+            </div>
         </div>
     );
 };

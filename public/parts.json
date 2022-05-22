@@ -4,47 +4,53 @@
         "img": "https://www.computervillage.com.bd/uploads/products/photos/item_Western-Digital-Green-480GB-M.2-SATAIII-SSD-__1651206137.webp",
         "description": "A WD Blue 3D NAND SATA SSD uses 3D NAND technology not only for higher capacities (up to 2TB) than the previous generation WD Blue SSDs, but also to help reduce cell-to-cell interference for enhanced reliability.",
         "price": 80,
-        "minimumQuanity" : 12,
-        "availableQuanity" : 56
+        "minimumOrderQuanity" : 12,
+        "availableQuanity" : 56,
+        "stock": "stock"
     },
     {
         "name": "Gigabyte Aorus 8GB RGB DDR4 3600MHz Desktop RAM",
         "img": "https://www.computervillage.com.bd/uploads/products/photos/ZG8T9Ovx03CZpgA2dgFDoCSTwbBEljEgEn6LNjVF.png",
         "description": "The all new AORUS RGB Memory kit is engineered to be the best and to deliver absolute performance.The stylish, luxurious design and the glossy finish make it stand out against the competition.The diffused RGB LEDs paired with aluminum heatsinks provide both effective heat dissipation and impressive style at the same time.",
         "price": 75,
-        "minimumQuanity" : 12,
-        "availableQuanity" : 45
+        "minimumOrderQuanity" : 12,
+        "availableQuanity" : 45,
+        "stock": "stock"
     },
     {
         "name": "AMD Ryzen 7 3700X Processor",
         "img": "https://www.computervillage.com.bd/uploads/products/photos/item_AMD-Ryzen-7-3700X-Processor-__1646138341.webp",
         "description": "Every Ryzen 7 processor comes with a color-changing LED cooling that improves the performance, acoustics, and appearance of PCs. It has a 3.6GHz Base Clock, a 4.4GHz Max Boost Clock, 4MB L2 Cache, 32MB L3 Cache, AM4 Package, and TSMC 7nm FinFET CMOS in this processor.",
         "price": 400,
-        "minimumQuanity" : 3,
-        "availableQuanity" : 20
+        "minimumOrderQuanity" : 3,
+        "availableQuanity" : 20, 
+        "stock": "stock"
     },
     {
         "name": "Asus ROG Strix B365-F 9TH Gen LGA1151 ATX Gaming Motherboard",
         "img": "https://www.computervillage.com.bd/uploads/products/photos/item_Asus-ROG-Strix-B365-F-9TH-Gen-LGA1151-ATX-Gaming-Motherboard-__1646422885.webp",
         "description": "Comprehensive cooling controls, quick storage, and proprietary technologies to improve memory stability and speed deliver outstanding performance. The ROG Strix B365-F Gaming has the muscle to regulate Intel's latest CPUs thanks to Digit+ power control and an effective thermal solution. The Digi+ VRM is one of the best in the business, ensuring ultra-smooth and clean power delivery to the CPU.",
         "price": 200,
-        "minimumQuanity" : 6,
-        "availableQuanity" : 36
+        "minimumOrderQuanity" : 6,
+        "availableQuanity" : 36,
+        "stock": "stock"
     },
     {
         "name": "Gigabyte Geforce RTX 2060 SUPER WINDFORCE OC 8GB Graphics Card",
         "img": "https://www.computervillage.com.bd/uploads/products/photos/item_Gigabyte-Geforce-RTX-2060-SUPER-WINDFORCE-OC-8GB-Graphics-Card-__1645423722.webp",
         "description": "Graphics Card Gigabyte Geforce RTX 2060 SUPER WINDFORCE OC 8GB. 2x 100mm unique blade fans, alternate spinning fan, 2 composite copper heat pipes direct touch GPU, and 3D active fan make up the WINDFORCE 2X cooling system, which provides good heat dissipation.",
         "price": 800,
-        "minimumQuanity" : 3,
-        "availableQuanity" : 12
+        "minimumOrderQuanity" : 3,
+        "availableQuanity" : 12,
+        "stock": "stock"
     },
     {
         "name": "Deepcool Castle 240RGB V2 Liquid CPU Cooler",
         "img": "https://www.computervillage.com.bd/uploads/products/photos/item_Deepcool-Castle-240RGB-V2-Liquid-CPU-Cooler-__1649832634.webp",
         "description": "The Deepcool Gamer Storm Castle 240RGB V2 Liquid CPU Cooler features an Anti-leak Tech Inside the liquid cooling system. The technology assists the system in achieving automated pressure balance, which significantly improves the operational safety of AIO liquid cooling systems. It has double window panes and immersive ambient lighting, allowing for a perfect display of aesthetic illumination. It has a 16.7M true colors flowing RGB system that can be easily synchronized and controlled by the wired controller included. The lighting system includes five built-in effects (dynamic, static, breathing, comet, and fashion collision) as well as 36 interchangeable lighting modes.",
         "price": 110,
-        "minimumQuanity" : 12,
-        "availableQuanity" : 36
+        "minimumOrderQuanity" : 12,
+        "availableQuanity" : 36,
+        "stock": "stock"
     }
 ]
