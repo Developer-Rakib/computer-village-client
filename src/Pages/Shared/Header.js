@@ -38,7 +38,6 @@ const Header = () => {
             >
                 {
                     user &&
-                    // <label for="dashboard-drower" class="btn btn-primary drawer-button lg:hidden"></label>
                     <label for="dashboard-drower" tabindex="1" class="md:hidden absolute left-6  top-[22px]">
                         <MdDashboardCustomize className='h-5 w-5'></MdDashboardCustomize>
                     </label>
@@ -56,7 +55,7 @@ const Header = () => {
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/blogs"}>Blogs</NavLink>
 
                     {user ?
-                        <button onClick={handleLogout} className='uppercase my-0.5 md:my-0 text-left  md:w-auto mx-auto md:pb-0.5' >LogOut</button>
+                        <button onClick={handleLogout} className='uppercase my-0.5 md:my-0 text-left   mx-auto md:mx-0 md:pb-0.5' >LogOut</button>
                         :
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/login"}>Login</NavLink>
                     }

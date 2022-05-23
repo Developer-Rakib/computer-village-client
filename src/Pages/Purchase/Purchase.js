@@ -69,14 +69,14 @@ const Purchase = () => {
                                 type='submit' style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-10 py-2">Purchase</button>
 
                             <label
-                            onClick={() => setPartDetail(parts)}
-                            for="my-modal"
-                             style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">Details</label>
+                                onClick={() => setPartDetail(parts)}
+                                for="purchase-modal"
+                                style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">Details</label>
                         </div>
                     </form>
                     {
                         partDetail && <PurchaseModal
-                        parts={parts}
+                            parts={parts}
                         ></PurchaseModal>
                     }
 
