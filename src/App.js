@@ -25,7 +25,7 @@ function App() {
       <Toaster></Toaster>
       <Routes>
         <Route path='/' element={<Home></Home>} ></Route>
-        <Route path='/purchase' element={<RequireAuth><Purchase></Purchase></RequireAuth>} ></Route>
+        <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>} ></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<MyOrder></MyOrder>} ></Route>
           <Route path='addReview' element={<AddReview></AddReview>} ></Route>

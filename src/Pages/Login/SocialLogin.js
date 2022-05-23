@@ -3,13 +3,13 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-// import useToken from '../../Hooks/useToken';
+import useToken from '../../Hooks/useToken';
 
 const SocialLogin = () => {
 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    // const [token, setToken] = useToken(user)
-    // console.log(token);
+    const [token, setToken] = useToken(user)
+    
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -35,12 +35,11 @@ const SocialLogin = () => {
 
     // get token and set in localStorage
     useEffect(() => {
-        if (user) {
-            // console.log(user);
+        if (token) {
             navigate(from, { replace: true });
             toast.success('Login with google Successfully!', { id: "social_login" })
         }
-    }, [user, from, navigate])
+    }, [ token, from, navigate])
 
 
 

@@ -6,9 +6,9 @@ import Loader from './Loader';
 
 const RequireAuth = ({children}) => {
     let location = useLocation();
-    let [user, leading, error] = useAuthState(auth)
-    console.log(user);
-    if (leading) {
+    let [user, loading, error] = useAuthState(auth)
+    // console.log(user);
+    if (loading) {
         return <Loader></Loader>
     }
     if (!user) {

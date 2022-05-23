@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const part = ({ part }) => {
-    const { name, img, description, price, minimumOrderQuanity, availableQuanity } = part;
+const Part = ({ part }) => {
+    const { name, img, description, price, minimumOrderQuanity, availableQuanity , _id} = part;
+    const navigate = useNavigate()
+
+
+
     return (
         <div  className='w-[350px] border hover:shadow-2xl transition text-secondary px-2 py-5 m-8 rounded'>
             <img className='h-[230px] mx-auto' src={img} alt="" />
@@ -20,9 +25,11 @@ const part = ({ part }) => {
                 </div>
                 </div>
             </div>
-            <button style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-10 py-2">Buy Now</button>
+            <button
+            onClick={()=>navigate(`/purchase/${_id}`)}
+             style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-10 py-2">Buy Now</button>
         </div>
     );
 };
 
-export default part;
+export default Part;

@@ -8,10 +8,10 @@ import Loader from './Loader';
 
 const RequireAdmin = () => {
     let location = useLocation();
-    let [user, leading, error] = useAuthState(auth)
+    let [user, loading, error] = useAuthState(auth)
     // let [admin, adminLoading] = useAdmin(user)
     // console.log(admin);
-    // if (leading || adminLoading) {
+    // if (loading || adminLoading) {
     //     return <Loader></Loader>
     // }
     // if (!user || !admin) {

@@ -4,8 +4,9 @@ import Part from './Part';
 
 const Parts = () => {
     const [parts, setParts]= useState([])
+
     useEffect( ()=>{
-        axios.get('parts.json')
+        axios.get('http://localhost:5000/parts')
     .then(data => {
         setParts(data.data)
     })
@@ -15,8 +16,8 @@ const Parts = () => {
         <div className='my-10 sm:px-10'>
             <div className='flex justify-evenly flex-wrap'>
                 {
-                    parts.map( (part, i) => <Part
-                    key={i}
+                    parts.map( (part) => <Part
+                    key={part._id}
                     part={part}
                     ></Part>)
                 }

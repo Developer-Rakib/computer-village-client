@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    let [user, loading, error] = useAuthState(auth)
+    // console.log(user);
     // const { isLoading, error, data: services } = useQuery('services', () =>
     //     axios.get('http://localhost:5000/services')
     // )
@@ -60,6 +64,9 @@ const AddReview = () => {
         //     })
 
     }
+    if (loading) {
+        return <Loader></Loader>
+    }
     return (
         <div className=''>
             <h2 className="text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Review</h2>
@@ -70,7 +77,7 @@ const AddReview = () => {
                         value: true,
                         message: 'Name is Required'
                     }
-                })} />
+                })}  value={user.displayName}/>
                 <label className="label">
                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                 </label>
@@ -101,7 +108,7 @@ const AddReview = () => {
                 </label>
                 
                 
-
+{/* 
                 <input type={'file'} className='mt- ' {...register("img", {
                     required: {
                         value: true,
@@ -110,7 +117,7 @@ const AddReview = () => {
                 })} />
                 <label className="label">
                     {errors.img?.type === 'required' && <span className="label-text-alt text-red-500">{errors.img.message}</span>}
-                </label>
+                </label> */}
 
 
                 <textarea className='input h-32 input-bordered input-md'  placeholder='Description' {...register("Description", {
