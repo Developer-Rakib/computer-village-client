@@ -2,6 +2,7 @@
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     background: rgba(221, 218, 218, 0.856);
+    z-index: 100;
 }
 
 .header-container nav {
@@ -65,10 +66,10 @@
 /* responsive  */
 @media (max-width:850px) {
     .header-container nav ul a {
-        padding: 5px 0px;
+        padding: 3px 0px;
         width: 40%;
         /* display: inline-block; */
-        margin: 6px auto;
+        margin: 0px auto;
     }
     .header-container nav ul {
         background-color: #f15048;
