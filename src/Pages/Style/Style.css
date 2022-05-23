@@ -61,7 +61,10 @@
     font-weight: 700;
 }
 
+.profileModal{
+    /* z-index: 100; */
 
+}
 
 /* responsive  */
 @media (max-width:850px) {

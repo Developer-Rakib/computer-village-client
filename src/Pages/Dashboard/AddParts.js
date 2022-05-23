@@ -1,19 +1,8 @@
-import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { useQuery } from 'react-query';
-import Loader from '../Shared/Loader';
 
-const AddReview = () => {
+const AddParts = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    // const { isLoading, error, data: services } = useQuery('services', () =>
-    //     axios.get('http://localhost:5000/services')
-    // )
-
-    const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
-
-    // if (isLoading) return <Loader></Loader>
 
     const onSubmit = async data => {
         console.log(data);
@@ -62,7 +51,7 @@ const AddReview = () => {
     }
     return (
         <div className=''>
-            <h2 className="text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Review</h2>
+            <h2 className="text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Parts</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-7/12 mx-auto">
 
                 <input className='input input-bordered input-md' placeholder='Name' {...register("name", {
@@ -75,34 +64,57 @@ const AddReview = () => {
                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                 </label>
 
-                <input className='input input-bordered input-md' placeholder='Rating' 
-                type={'number'}
-                    {...register("number", {
+
+                <div className='flex flex-wrap justify-between'>
+                    <div className='sm:w-6/12 '>
+                        <input className='input input-bordered input-md px-5' placeholder='Price'
+                            type={'number'}
+                            {...register("price", {
+                                required: {
+                                    value: true,
+                                    message: 'Price is Required'
+                                },
+
+                            })} />
+                        <label className="label">
+                            {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+
+                        </label>
+                    </div>
+                    <div className='sm:w-6/12'>
+                        <input className='input input-bordered input-md px-5' placeholder='Available Quantity'
+                            type={'number'}
+                            {...register("availableQuantity", {
+                                required: {
+                                    value: true,
+                                    message: 'Available Quantity is Required'
+                                },
+
+                            })} />
+                        <label className="label">
+                            {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}
+
+                        </label>
+                    </div>
+                </div>
+
+                <input className='input input-bordered input-md' placeholder='Minimum Order Quantity'
+                    type={'number'}
+                    {...register("minimunOrderQuantity", {
                         required: {
                             value: true,
-                            message: 'Rating is Required'
+                            message: 'Minimum Order Quantity is Required'
                         },
-                        
-                        maxLength: {
-                            value: 1,
-                            message: 'please enter 1 number of rating' // JS only: <p>error message</p> TS only support string
-                          },
-                          max: {
-                            value: 5,
-                            message: 'please rate 0 - 5' // JS only: <p>error message</p> TS only support string
-                          }
 
                     })} />
                 <label className="label">
-                    {errors.number?.type === 'required' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                    {errors.number?.type === 'max' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                    {errors.number?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                    
+                    {errors.minimunOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minimunOrderQuantity.message}</span>}
                 </label>
-                
-                
+                <label className="label">
+                    <span className="label-text">Select Image</span>
 
-                <input type={'file'} className='mt- ' {...register("img", {
+                </label>
+                <input type={'file'} className='ml-1 ' {...register("img", {
                     required: {
                         value: true,
                         message: 'image is Required'
@@ -113,7 +125,7 @@ const AddReview = () => {
                 </label>
 
 
-                <textarea className='input h-32 input-bordered input-md'  placeholder='Description' {...register("Description", {
+                <textarea className='input h-32 mt-2 input-bordered input-md' placeholder='Description' {...register("Description", {
                     required: {
                         value: true,
                         message: 'Description is Required'
@@ -125,12 +137,12 @@ const AddReview = () => {
 
 
 
-
                 <input
-                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2" type={'submit'} value={'Add Review'} />
+                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2" type={'submit'} value={'Add Parts'} />
+
             </form>
         </div>
     );
 };
 
-export default AddReview;
+export default AddParts;
