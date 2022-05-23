@@ -25,6 +25,7 @@ const Header = () => {
             .then(() => {
                 navigat('/login')
                 toast.success('Logout Succes!')
+                localStorage.removeItem('accessToken')
             })
     }
 

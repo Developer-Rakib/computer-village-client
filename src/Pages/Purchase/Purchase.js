@@ -42,6 +42,7 @@ const Purchase = () => {
             customerEmail: user.email,
             customerPhone: event.target.phone.value,
             customerAddress: event.target.address.value,
+            name,
             unitPrice,
             price,
             quanity,
@@ -53,6 +54,7 @@ const Purchase = () => {
             if (data.data.insertedId) {
                 toast.success(`${name} Order Succssfully!`)
                 event.target.reset()
+                setQuantity(minimumOrderQuanity)
             }
             else{
                 toast.error(`Somthing is Wrong`)

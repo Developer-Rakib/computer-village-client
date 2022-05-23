@@ -25,4 +25,4 @@ axiosPrivate.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
-export default axiosPrivate
+export default axiosPrivate;
