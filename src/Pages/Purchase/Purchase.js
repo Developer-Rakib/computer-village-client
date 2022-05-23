@@ -2,9 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { MdOutlineAddCircle } from 'react-icons/md';
-import { useQuery } from 'react-query';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
 import PurchaseModal from './PurchaseModal';
@@ -14,7 +12,6 @@ const Purchase = () => {
     const [part, setPart] = useState({})
     const [quanity, setQuantity] = useState(null)
     const [quanityError, setQuantityError] = useState(null)
-    console.log(part?.minimumOrderQuanity);
     const [loadingg, setLoadingg] = useState(true)
     const { id } = useParams()
     const [user, loading] = useAuthState(auth);
@@ -22,7 +19,7 @@ const Purchase = () => {
     useEffect(() => {
         axios.get(`http://localhost:5000/part/${id}`)
             .then(data => {
-                console.log(data.data.minimumOrderQuanity);
+                // console.log(data.data.minimumOrderQuanity);
                 setPart(data.data)
                 setQuantity(data.data.quanity)
                 setLoadingg(false)
@@ -39,14 +36,6 @@ const Purchase = () => {
     const handlePurchase = (event) => {
         event.preventDefault();
         const quanity = event.target.quanity.value;
-        if (quanity < minimumOrderQuanity) {
-            toast.error(`You Have to Purchase Atlest ${minimumOrderQuanity} Products`)
-            return;
-        }
-        if (quanity > availableQuanity) {
-            toast.error('Please Order Less Then Available Stock!')
-            return;
-        }
         const unitPrice = quanity * price;
         const purchaseInfo = {
             customerName: user.displayName,
@@ -58,7 +47,18 @@ const Purchase = () => {
             quanity,
             img,
         }
-        console.log(purchaseInfo);
+        // console.log(purchaseInfo);
+        axios.post("http://localhost:5000/orders", purchaseInfo)
+        .then(data =>{
+            if (data.data.insertedId) {
+                toast.success(`${name} Order Succssfully!`)
+                event.target.reset()
+            }
+            else{
+                toast.error(`Somthing is Wrong`)
+
+            }
+        })
     }
     const handleQuantity = (e) => {
         setQuantity(e.target.value)
@@ -73,7 +73,7 @@ const Purchase = () => {
         setQuantityError(null)
     }
 
-console.log(quanityError);
+// console.log(quanityError);
     return (
         <div
             style={{ fontFamily: 'Merriweather' }}
@@ -102,7 +102,7 @@ console.log(quanityError);
 
 
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="address" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" />
+                            <input type="text" name="address" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
                             <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
                         </div>
                         <div class="grid xl:grid-cols-2 xl:gap-6">
@@ -111,7 +111,7 @@ console.log(quanityError);
                                 <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
-                                <input onChange={handleQuantity} type="number" name="quanity" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" value={quanity == null ? minimumOrderQuanity : quanity} />
+                                <input onChange={handleQuantity} type="number" name="quanity" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required value={quanity == null ? minimumOrderQuanity : quanity} />
                                 <label className="label">
                                     { quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>}
                                 </label>

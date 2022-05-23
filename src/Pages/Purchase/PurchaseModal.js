@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PurchaseModal = ({ part }) => {
-    console.log(part);
+    // console.log(part);
     const {img, name, description, stock, price ,minimumOrderQuanity, availableQuanity} = part
     return (
         <div>
