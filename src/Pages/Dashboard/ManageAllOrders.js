@@ -3,16 +3,47 @@ import axiosPrivate from '../../api/axiosPrivate';
 import { useQuery } from 'react-query'
 import Loader from '../Shared/Loader';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 const ManageAllOrders = () => {
-    const { isLoading, error, data:orders } = useQuery('orders', () =>
+    const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
         axiosPrivate.get("http://localhost:5000/orders")
-            
+
 
     )
 
-    const hnadleDelete =(id, name)=>{
+    const hnadleDelete = (id, name) => {
         console.log(id);
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Canceled Order!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPrivate.delete(`http://localhost:5000/order/${id}`)
+                    .then(data => {
+                        console.log(data.data);
+                        if (data.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Canceled!',
+                                `${name} has been Canceled.`,
+                                'success'
+                            )
+                            refetch()
+                        }
+                        else {
+                            toast.error('Somthing is Wrong !')
+                        }
+                    })
+
+            }
+        })
     }
     if (isLoading) {
         return <Loader></Loader>
@@ -34,7 +65,7 @@ const ManageAllOrders = () => {
                                 Product Name
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
-                                Unit Price
+                                Total Price
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
                                 Quanity
@@ -55,25 +86,26 @@ const ManageAllOrders = () => {
                                         <td class="py-2 text-[13px] sm:py-4">
                                             {order.customerName}
                                         </td>
-                                        <td class="py-2 w-40  text-[13px] sm:py-4">
+                                        <td class="py-2 w-48  text-[13px] sm:py-4">
                                             {order.name}
                                         </td>
                                         <td class="py-2 text-[13px]  text-center sm:py-4">
-                                            {order.unitPrice}
+                                            ${order.unitPrice}
                                         </td>
                                         <td class="py-2 text-[13px] text-center sm:py-4">
-                                            {order.quanity}
+                                            <button
+                                                onClick={() => hnadleDelete(order._id, order.name)}
+                                                className='btn mr-1 btn-xs bg-primary text-white border-none'>Ship</button>
+                                            <p className='text-success'>Unpaid</p>
                                         </td>
                                         <td class="py-2 text-[13px] text-center sm:py-4">
-                                            {!order.pay ?
-                                                <>
-                                                    <button
-                                                        onClick={() => hnadleDelete(order._id, order.name)}
-                                                        className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
-                                                    <button className='btn btn-xs bg-success text-white border-none'>Pay</button>
-                                                </>
-                                                :
-                                                <p className='text-success'>Paid</p>
+                                            {!order.pay &&
+                                                <button
+                                                    onClick={() => hnadleDelete(order._id, order.name)}
+                                                    className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
+
+
+
                                             }
                                         </td>
                                     </tr>

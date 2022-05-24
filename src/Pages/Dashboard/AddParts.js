@@ -8,22 +8,18 @@ const AddParts = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
     const onSubmit = async data => {
-        // console.log(data);
         
         const img = data.img[0];
         const formData = new FormData();
         formData.append('image', img);
-        const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`
-
+        const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
         fetch(url, {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 if (result.success) {
-                    // console.log(result);
                     const imgUrl = result.data.url;
                     const part = {
                         name : data.name,
@@ -33,11 +29,11 @@ const AddParts = () => {
                         availableQuantity : data.availableQuantity,
                         img: imgUrl
                     }
-                    console.log(part);
+                    // console.log(part);
                     axiosPrivate.post(`http://localhost:5000/part`, part)
                         .then(data => {
                             // console.log(data.data.success);
-                            console.log(data.data);
+                            // console.log(data.data);
                             if (data.data.success) {
                                 toast.success(`${data.data.message}`)
                             }
