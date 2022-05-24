@@ -5,7 +5,6 @@ import Loader from '../Shared/Loader';
 import { Link } from 'react-router-dom';
 
 const ManageAllOrders = () => {
-    // const [orders, setOrders] = useState([])
     const { isLoading, error, data:orders } = useQuery('orders', () =>
         axiosPrivate.get("http://localhost:5000/orders")
             

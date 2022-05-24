@@ -40,11 +40,11 @@ const MyOrder = () => {
                             )
                             refetch()
                         }
-                        else{
+                        else {
                             toast.error('Somthing is Wrong !')
                         }
                     })
-                
+
             }
         })
     }
@@ -55,6 +55,7 @@ const MyOrder = () => {
 
     return (
         <div className='sm:px-10 px-2 pb-5'>
+            <h5 className="text-lg text-left font-bold  mb-2 text-primary">My Orders</h5>
             <div class="relative  overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
