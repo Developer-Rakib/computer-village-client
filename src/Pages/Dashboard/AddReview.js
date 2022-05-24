@@ -14,7 +14,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     let [user, loading, error] = useAuthState(auth)
 
-    // const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
+
 
 
     const onSubmit = data => {
@@ -35,48 +35,6 @@ const AddReview = () => {
             }
         })
 
-
-        // const img = data.img[0];
-        // const formData = new FormData();
-        // formData.append('image', img);
-        // const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`
-
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         if (result.success) {
-        //             // console.log(result);
-        //             const imgUrl = result.data.url;
-        //             const doctor = {
-        //                 name: data.name,
-        //                 email: data.email,
-        //                 spiciality: data.spiciality,
-        //                 img: imgUrl
-        //             }
-        //             console.log(doctor);
-        //             axios.post(`http://localhost:5000/doctor`, doctor, {
-        //                 headers: {
-        //                     'authorization': `bearer ${localStorage.getItem('accessToken')}`
-        //                 }
-        //             })
-        //                 .then(data => {
-        //                     // console.log(data.data.success);
-        //                     console.log(data);
-        //                     if (data.data.success) {
-        //                         toast.success(`${data.data.message}`)
-        //                     }
-        //                     else {
-        //                         toast.success(`${data.data.message}`)
-
-        //                     }
-
-        //                 })
-
-        //         }
-        //     })
 
     }
     if (loading) {

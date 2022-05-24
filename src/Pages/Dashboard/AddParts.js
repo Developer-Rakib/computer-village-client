@@ -1,52 +1,55 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import axiosPrivate from '../../api/axiosPrivate';
 
 const AddParts = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
     const onSubmit = async data => {
-        console.log(data);
-        // const img = data.img[0];
-        // const formData = new FormData();
-        // formData.append('image', img);
-        // const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`
+        // console.log(data);
+        
+        const img = data.img[0];
+        const formData = new FormData();
+        formData.append('image', img);
+        const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`
 
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         if (result.success) {
-        //             // console.log(result);
-        //             const imgUrl = result.data.url;
-        //             const doctor = {
-        //                 name: data.name,
-        //                 email: data.email,
-        //                 spiciality: data.spiciality,
-        //                 img: imgUrl
-        //             }
-        //             console.log(doctor);
-        //             axios.post(`http://localhost:5000/doctor`, doctor, {
-        //                 headers: {
-        //                     'authorization': `bearer ${localStorage.getItem('accessToken')}`
-        //                 }
-        //             })
-        //                 .then(data => {
-        //                     // console.log(data.data.success);
-        //                     console.log(data);
-        //                     if (data.data.success) {
-        //                         toast.success(`${data.data.message}`)
-        //                     }
-        //                     else {
-        //                         toast.success(`${data.data.message}`)
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if (result.success) {
+                    // console.log(result);
+                    const imgUrl = result.data.url;
+                    const part = {
+                        name : data.name,
+                        price : data.price,
+                        description : data.description,
+                        minimumOrderQuanity : data.minimunOrderQuantity,
+                        availableQuantity : data.availableQuantity,
+                        img: imgUrl
+                    }
+                    console.log(part);
+                    axiosPrivate.post(`http://localhost:5000/part`, part)
+                        .then(data => {
+                            // console.log(data.data.success);
+                            console.log(data.data);
+                            if (data.data.success) {
+                                toast.success(`${data.data.message}`)
+                            }
+                            else {
+                                toast.success(`${data.data.message}`)
 
-        //                     }
+                            }
 
-        //                 })
+                        })
 
-        //         }
-        //     })
+                }
+            })
 
     }
     return (
@@ -125,14 +128,14 @@ const AddParts = () => {
                 </label>
 
 
-                <textarea className='input h-32 mt-2 input-bordered input-md' placeholder='Description' {...register("Description", {
+                <textarea className='input h-32 mt-2 input-bordered input-md' placeholder='Description' {...register("description", {
                     required: {
                         value: true,
                         message: 'Description is Required'
                     }
                 })} />
                 <label className="label">
-                    {errors.Description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.Description.message}</span>}
+                    {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
                 </label>
 
 

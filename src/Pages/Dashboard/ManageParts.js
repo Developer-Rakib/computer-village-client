@@ -13,7 +13,7 @@ const ManageParts = () => {
     )
 
     const hnadleDelete = (id, name) => {
-        console.log(id);
+        // console.log(id);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -47,7 +47,7 @@ const ManageParts = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-    console.log(parts.data);
+    // console.log(parts.data);
     return (
         <div className='sm:px-10 px-2 pb-5'>
             <h5 className="text-lg text-left font-bold  mb-2 text-primary">Mange Product</h5>
