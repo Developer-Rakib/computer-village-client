@@ -62,14 +62,11 @@ const MyOrder = () => {
                             <th scope="col" class="py-2  sm:py-3">
 
                             </th>
-                            <th scope="col" class="py-2 sm:py-3">
-                                Customer Name
-                            </th>
                             <th scope="col" class="py-2  sm:py-3">
                                 Product Name
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
-                                Unit Price
+                                Total Price
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
                                 Quanity
@@ -87,10 +84,7 @@ const MyOrder = () => {
                                         <th scope="row" class="pl-3 pr-3 sm:pr-0 sm:pl-5 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">
                                             {i + 1}
                                         </th>
-                                        <td class="py-2 text-[13px] sm:py-4">
-                                            {order.customerName}
-                                        </td>
-                                        <td class="py-2 w-40  text-[13px] sm:py-4">
+                                        <td class="py-2 w-60  text-[13px] sm:py-4">
                                             {order.name}
                                         </td>
                                         <td class="py-2 text-[13px]  text-center sm:py-4">

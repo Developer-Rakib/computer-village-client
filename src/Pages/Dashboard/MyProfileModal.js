@@ -6,7 +6,7 @@ import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 
 const MyProfileModal = ({ setMyinfoModal, profile , refetch}) => {
-    const { cuntry,education, linkedinProfile, number, streetAddress} = profile;
+    const {cuntry, education, linkedinProfile, number, streetAddress} = profile;
     // console.log(profile);
     const [user, loading] = useAuthState(auth);
     const handleInfoSave = (e) => {
@@ -20,7 +20,6 @@ const MyProfileModal = ({ setMyinfoModal, profile , refetch}) => {
             number: `${e.target.number.value || number}`,
             linkedinProfile: `${e.target.linkdedin.value || linkedinProfile}`
         }
-        // console.log(profile);
         // console.log(profile);
         axiosPrivate.put(`http://localhost:5000/profile/${user?.email}`, profile)
             .then(data => {
