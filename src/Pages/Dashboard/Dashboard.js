@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li><Link className='border my-1' to={"/dashboard"}>My Order</Link></li>
-                    <li><Link className='border  my-1' to={"/dashboard/addReview"}>Add a  Reiview</Link></li>
+                    <li><Link className='border  my-1' to={"/dashboard/addReview"}>Add a  Review</Link></li>
                     <li><Link className='border my-1' to={"/dashboard/myProfile"}>My Profile</Link></li>
                     {
                         // admin &&

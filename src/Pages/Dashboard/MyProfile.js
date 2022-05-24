@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 import MyProfileModal from './MyProfileModal';
 
 const MyProfile = () => {
-    const [myInfo, setMyinfo] = useState(null)
+    const [myInfoModal, setMyinfoModal] = useState(null)
+    const [myInfo, setMyinfo] = useState({})
+    const [user, loading] = useAuthState(auth);
+    // console.log(user);
 
-    const info = {
-        name: 'rakib',
-        email: "tazulislam601@gmail.com"
-    }
+
     return (
         <div className=''>
             <div class="bg-white w-11/12 mx-auto  shadow overflow-hidden sm:rounded-lg">
@@ -19,11 +21,11 @@ const MyProfile = () => {
                     <dl>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Full name</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Margot Foster</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{user.displayName}</dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Email address</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">margotfoster@example.com</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{user.email}</dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Number</dt>
@@ -34,6 +36,10 @@ const MyProfile = () => {
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Doulot put, chatkhil, noakhali, Bangladesh</dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Education</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Masters in Darun alum mueenul islam</dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Linkedin</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">https://bd.linkedin.com</dd>
                         </div>
@@ -43,15 +49,15 @@ const MyProfile = () => {
             </div>
             <div className='text-right mt-5 mr-3'>
                 <label
-                    onClick={() => setMyinfo(info)}
+                    onClick={() => setMyinfoModal(true)}
                     for="profile-modal"
                     style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">Update Profile</label>
             </div>
 
             {
-                myInfo && <MyProfileModal
+                myInfoModal && <MyProfileModal
                 style={{zIndex:'999'}} 
-                setMyinfo={setMyinfo}></MyProfileModal>
+                setMyinfoModal={setMyinfoModal}></MyProfileModal>
             }
 
 
