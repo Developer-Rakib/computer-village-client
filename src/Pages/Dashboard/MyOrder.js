@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import axiosPrivate from '../../api/axiosPrivate';
 import Loader from '../Shared/Loader';
 import Swal from 'sweetalert2'
-import axios from 'axios';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';

@@ -4,23 +4,38 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import Rating from 'react-rating';
 import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
+import axiosPrivate from '../../api/axiosPrivate';
+
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     let [user, loading, error] = useAuthState(auth)
-    // console.log(user);
-    // const { isLoading, error, data: services } = useQuery('services', () =>
-    //     axios.get('http://localhost:5000/services')
-    // )
 
-    const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
+    // const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
 
-    // if (isLoading) return <Loader></Loader>
 
-    const onSubmit = async data => {
-        console.log(data);
+    const onSubmit = data => {
+
+        // console.log(data);
+        const review = {
+            name : data.name,
+            review : data.Description,
+            rating : data.rating,
+            img : user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDw-3DeNBPvLKQ2-4Sr922p-tk-VgeGcaNHQ&usqp=CAU",
+        }
+        // console.log(review);
+        axiosPrivate.post(`http://localhost:5000/reviews`, review)
+        .then(data => {
+            console.log(data.data);
+            if (data.data.insertedId) {
+                toast.success(`Your Review Succesfully Posted`)
+            }
+        })
+
+
         // const img = data.img[0];
         // const formData = new FormData();
         // formData.append('image', img);
@@ -84,7 +99,7 @@ const AddReview = () => {
 
                 <input className='input input-bordered input-md' placeholder='Rating' 
                 type={'number'}
-                    {...register("number", {
+                    {...register("rating", {
                         required: {
                             value: true,
                             message: 'Rating is Required'
@@ -101,9 +116,9 @@ const AddReview = () => {
 
                     })} />
                 <label className="label">
-                    {errors.number?.type === 'required' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                    {errors.number?.type === 'max' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
-                    {errors.number?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.number.message}</span>}
+                    {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                    {errors.rating?.type === 'max' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                    {errors.rating?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
                     
                 </label>
                 
@@ -134,7 +149,7 @@ const AddReview = () => {
 
 
                 <input
-                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2" type={'submit'} value={'Add Review'} />
+                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2" type={'submit'} value={'Post Review'} />
             </form>
         </div>
     );
