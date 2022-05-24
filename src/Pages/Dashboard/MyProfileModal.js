@@ -2,30 +2,33 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
+import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 
-const MyProfileModal = ({ setMyinfoModal }) => {
-    const [myInfo, setMyinfo] = useState({})
+const MyProfileModal = ({ setMyinfoModal, profile , refetch}) => {
+    const { cuntry,education, linkedinProfile, number, streetAddress} = profile;
+    // console.log(profile);
     const [user, loading] = useAuthState(auth);
     const handleInfoSave = (e) => {
         e.preventDefault()
         const profile = {
             email: user.email,
             name: user.displayName,
-            education: e.target.education.value,
-            streetAddress: e.target.streetAddress.value,
-            cuntry: e.target.cuntry.value,
-            number: e.target.number.value,
-            linkedinProfile: e.target.linkdedin.value
+            education: `${e.target.education.value || education}`,
+            streetAddress: `${e.target.streetAddress.value || streetAddress}`,
+            cuntry: `${e.target.cuntry.value || cuntry}`,
+            number: `${e.target.number.value || number}`,
+            linkedinProfile: `${e.target.linkdedin.value || linkedinProfile}`
         }
-        console.log(profile);
         // console.log(profile);
-        axios.put(`http://localhost:5000/profile/${user?.email}`, profile)
+        // console.log(profile);
+        axiosPrivate.put(`http://localhost:5000/profile/${user?.email}`, profile)
             .then(data => {
                 console.log(data.data);
                 if ((data.data.matchedCount || data.data.upsertedCount) > 0) {
                     toast.success("Your profile is Updated")
                     setMyinfoModal(null)
+                    refetch()
                 }
             })
 

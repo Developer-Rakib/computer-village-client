@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
+import Loader from '../Shared/Loader';
 import MyProfileModal from './MyProfileModal';
 
 const MyProfile = () => {
     const [myInfoModal, setMyinfoModal] = useState(null)
-    const [myInfo, setMyinfo] = useState({})
     const [user, loading] = useAuthState(auth);
-    // console.log(user);
 
+    const { isLoading, error, data: profile, refetch } = useQuery('profile', () =>
+        axiosPrivate.get(`http://localhost:5000/profile/${user.email}`)
+    )
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+    // console.log(profile.data);
+
+    const { cuntry ,education, linkedinProfile, number, streetAddress} = profile?.data
 
     return (
         <div className=''>
@@ -29,19 +39,19 @@ const MyProfile = () => {
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Number</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">+8801978870125</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{number}</dd>
                         </div>
                         <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Street address</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Doulot put, chatkhil, noakhali, Bangladesh</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{streetAddress}, {cuntry}</dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Education</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Masters in Darun alum mueenul islam</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{education}</dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Linkedin</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">https://bd.linkedin.com</dd>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{linkedinProfile}</dd>
                         </div>
 
                     </dl>
@@ -51,12 +61,13 @@ const MyProfile = () => {
                 <label
                     onClick={() => setMyinfoModal(true)}
                     for="profile-modal"
-                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">Update Profile</label>
+                    style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">{profile.data ? "Update Profile" : "Add Profile"}</label>
             </div>
 
             {
                 myInfoModal && <MyProfileModal
-                style={{zIndex:'999'}} 
+                refetch={refetch}
+                profile={profile?.data}
                 setMyinfoModal={setMyinfoModal}></MyProfileModal>
             }
 
