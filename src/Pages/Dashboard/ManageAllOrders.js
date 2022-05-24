@@ -11,14 +11,18 @@ const ManageAllOrders = () => {
             
 
     )
+
+    const hnadleDelete =(id, name)=>{
+        console.log(id);
+    }
     if (isLoading) {
         return <Loader></Loader>
     }
 
     return (
         <div className='sm:px-10 px-2 pb-5'>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <div class="relative  overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="py-2  sm:py-3">
@@ -30,13 +34,13 @@ const ManageAllOrders = () => {
                             <th scope="col" class="py-2  sm:py-3">
                                 Product Name
                             </th>
-                            <th scope="col" class="py-2  sm:py-3">
+                            <th scope="col" class="py-2 text-center sm:py-3">
                                 Unit Price
                             </th>
-                            <th scope="col" class="py-2  sm:py-3">
+                            <th scope="col" class="py-2 text-center sm:py-3">
                                 Quanity
                             </th>
-                            <th scope="col" class="py-2  sm:py-3">
+                            <th scope="col" class="py-2 text-center sm:py-3">
                                 Payment
                             </th>
                         </tr>
@@ -52,20 +56,22 @@ const ManageAllOrders = () => {
                                         <td class="py-2 text-[13px] sm:py-4">
                                             {order.customerName}
                                         </td>
-                                        <td class="py-2 text-[13px] sm:py-4">
+                                        <td class="py-2 w-40  text-[13px] sm:py-4">
                                             {order.name}
                                         </td>
-                                        <td class="py-2 text-[13px]  sm:py-4">
+                                        <td class="py-2 text-[13px]  text-center sm:py-4">
                                             {order.unitPrice}
                                         </td>
-                                        <td class="py-2 text-[13px]  sm:py-4">
+                                        <td class="py-2 text-[13px] text-center sm:py-4">
                                             {order.quanity}
                                         </td>
-                                        <td class="py-2 text-[13px]  sm:py-4">
+                                        <td class="py-2 text-[13px] text-center sm:py-4">
                                             {!order.pay ?
                                                 <>
-                                                    <Link to={`/dashboard/payment/${order._id}`}><button className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button></Link>
-                                                    <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs bg-success text-white border-none'>Pay</button></Link>
+                                                    <button
+                                                        onClick={() => hnadleDelete(order._id, order.name)}
+                                                        className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
+                                                    <button className='btn btn-xs bg-success text-white border-none'>Pay</button>
                                                 </>
                                                 :
                                                 <p className='text-success'>Paid</p>
