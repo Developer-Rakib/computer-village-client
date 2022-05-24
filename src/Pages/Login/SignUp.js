@@ -49,7 +49,7 @@ const SignUp = () => {
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
-            toast.success('Login with google Successfully!', { id: "social_login" })
+            toast.success('Sign Up Successfully!', { id: "social_login" })
         }
     }, [ token, from, navigate])
 
