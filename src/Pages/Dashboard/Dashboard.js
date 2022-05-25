@@ -22,7 +22,7 @@ const Dashboard = () => {
                     {/* <!-- Page content here --> */}
                     <Outlet />
                 </div>
-                <div style={{}} class="drawer-side">
+                <div  class="drawer-side">
                     <label for="dashboard-drower" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
