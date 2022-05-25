@@ -43,8 +43,7 @@ const MakeAdmin = () => {
                             users?.data?.map((user, i) => {
 
                                 const makeAdmin = () => {
-
-                                    axiosPrivate.put(`http://localhost:5000/user/admin/${user?.email}`)
+                                    axiosPrivate.put(`http://localhost:5000/user/makeAdmin/${user?.email}`)
                                         .then(data => {
                                             console.log(data.data);
                                             if (data?.data.acknowledged) {
@@ -60,27 +59,22 @@ const MakeAdmin = () => {
 
                                 }
 
-                                // const makeAdmin = () => {
-                                //     fetch(`http://localhost:5000/user/admin/${user?.email}`, {
-                                //         method:'PUT',
-                                //         headers:{
-                                //             'authorization': `bearer ${localStorage.getItem('accessToken')}`
-                                //         }
-                                //     })
-                                //     .then(res => {
-                                //         if(res.status === 403){
-                                //             toast.error(`You not Admin!!`)
-                                //         }
-                                //         return res.json()
-                                //     })
-                                //     .then(data => {
-                                //         console.log(data)
-                                //         if (data?.acknowledged) {
-                                //             toast.success(`${user.email} has been Successfully Made Admin!`)
-                                //             refetch()
-                                //         }
-                                //     })
-                                // }
+                                const deleteAdmin = () => {
+                                    axiosPrivate.put(`http://localhost:5000/user/deleteAdmin/${user?.email}`)
+                                        .then(data => {
+                                            console.log(data.data);
+                                            if (data?.data.acknowledged) {
+                                                toast.success(`${user.email} has been Successfully Delete from Admin!`)
+                                                refetch()
+                                            }
+                                        }).catch(error => {
+                                            console.log(error.response);
+                                            if (error.response.status === 403) {
+                                                toast.error("You are Not Admin")
+                                            }
+                                        })
+
+                                }
 
                                 return (
                                     <tr key={user._id} class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
@@ -98,7 +92,8 @@ const MakeAdmin = () => {
                                                     class="h-6 px-3 uppercase bg-green-400 border-none hover:bg-green-600 rounded-full text-white">Make Admin</button>
                                             }
                                         </td>
-                                        <td class="py-2 text-[13px] sm:py-4 text-center">
+                                        <td
+                                        onClick={deleteAdmin} class="py-2 text-[13px] sm:py-4 text-center">
                                             <button class="h-6 px-3 uppercase bg-red-500 border-none  hover:bg-red-800 rounded-full text-white">Delete Admin</button>
                                         </td>
                                     </tr>

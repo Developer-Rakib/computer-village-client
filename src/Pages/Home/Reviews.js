@@ -14,7 +14,7 @@ const Reviews = () => {
     }
     return (
         <div className='Container py-10'>
-            <h1 className="text-4xl border-b-4 mb-2 mt-4 border-primary inline-block">Reviews</h1>
+            <h1 className="text-4xl border-b-4  mb-2 mt-4 border-primary inline-block">Reviews</h1>
             <div className='flex flex-wrap justify-evenly'>
                 {
                     reviews.data.map(review => <Review

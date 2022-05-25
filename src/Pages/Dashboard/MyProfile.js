@@ -11,9 +11,10 @@ const MyProfile = () => {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, error, data: profile, refetch } = useQuery('profile', () =>
-        axiosPrivate.get(`http://localhost:5000/profile/${user.email}`)
+        axiosPrivate.get(`http://localhost:5000/profile/${user?.email}`)
     )
-    if (isLoading) {
+    // console.log(error);
+    if (isLoading || loading) {
         return <Loader></Loader>
     }
     // console.log(profile.data);

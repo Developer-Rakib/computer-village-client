@@ -27,7 +27,7 @@ const ManageParts = () => {
             if (result.isConfirmed) {
                 axiosPrivate.delete(`http://localhost:5000/part/${id}`)
                     .then(data => {
-                        console.log(data.data);
+                        // console.log(data.data);
                         if (data.data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
@@ -47,7 +47,7 @@ const ManageParts = () => {
     if (isLoading) {
         return <Loader></Loader>
     }
-    // console.log(parts.data);
+    // console.log(parts.data.availableQuanity);
     return (
         <div className='sm:px-10 px-2 pb-5'>
             <h5 className="text-lg text-left font-bold  mb-2 text-primary">Mange Product</h5>
@@ -75,6 +75,8 @@ const ManageParts = () => {
                     <tbody>
                         {
                             parts.data?.map((part, i) => {
+                                // console.log(part.availableQuanity);
+
                                 return (
                                     <tr key={part._id} class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                                         <th scope="row" class="pl-3 pr-3 sm:pr-0 sm:pl-5 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">

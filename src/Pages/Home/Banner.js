@@ -6,7 +6,7 @@ const Banner = () => {
             <div className='Container'>
                 <div className='text-left w-8/12'>
                     <h1 style={{fontFamily:"font-family: 'Roboto Slab', serif;"}} className="text-7xl text-primary font-bold">Computer Village</h1>
-                    <p style={{fontFamily:'Open Sans,sans-serif'}} className='italic text-white py-4'>With up to 40 hours of battery life, Beats Solo3 Wireless is your perfect everyday headphone. With Fast Fuel, a 5-minute charge gives you 3 hours of playback.</p>
+                    <p style={{fontFamily:'Open Sans,sans-serif'}} className='italic text-white py-4'>Computer Village is one of the largest computer stores in Bangladesh offering bundle deals and discounted prices for the latest computer accessories</p>
                     <button style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} className='uppercase bg-primary rounded-full text-white px-12 py-2'>see more</button>
                 </div>
             </div>

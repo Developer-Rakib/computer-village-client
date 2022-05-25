@@ -11,7 +11,7 @@ import axiosPrivate from '../../api/axiosPrivate';
 
 
 const AddReview = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     let [user, loading, error] = useAuthState(auth)
 
 
@@ -24,13 +24,14 @@ const AddReview = () => {
             name : data.name,
             review : data.Description,
             rating : data.rating,
-            img : user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDw-3DeNBPvLKQ2-4Sr922p-tk-VgeGcaNHQ&usqp=CAU",
+            img : user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
         }
         // console.log(review);
         axiosPrivate.post(`http://localhost:5000/reviews`, review)
         .then(data => {
             console.log(data.data);
             if (data.data.insertedId) {
+                reset()
                 toast.success(`Your Review Succesfully Posted`)
             }
         })

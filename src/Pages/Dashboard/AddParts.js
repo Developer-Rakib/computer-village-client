@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import axiosPrivate from '../../api/axiosPrivate';
 
 const AddParts = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
     const onSubmit = async data => {
         
@@ -26,16 +26,17 @@ const AddParts = () => {
                         price : data.price,
                         description : data.description,
                         minimumOrderQuanity : data.minimunOrderQuantity,
-                        availableQuantity : data.availableQuantity,
+                        availableQuanity : data.availableQuantity,
                         img: imgUrl
                     }
-                    // console.log(part);
+                    console.log(part);
                     axiosPrivate.post(`http://localhost:5000/part`, part)
                         .then(data => {
                             // console.log(data.data.success);
                             // console.log(data.data);
                             if (data.data.success) {
                                 toast.success(`${data.data.message}`)
+                                reset()
                             }
                             else {
                                 toast.success(`${data.data.message}`)

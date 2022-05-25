@@ -1,0 +1,58 @@
+.project{
+    position: relative;
+    overflow: hidden;
+    
+   
+
+
+}
+/* .project:hover .project::before{
+    content: '';
+    background: blue;
+    color: white;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: visible;
+    display: block;
+    z-index: 100;
+} */
+.project:hover .hover-content{
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+    /* display: block; */
+}
+
+.hover-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.616);
+    color: white;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    /* display: none; */
+    transition: .5s;
+    z-index: 100;
+}
+/* .project:hover .hover-content{
+    height: 370px;
+    height: 370px;
+    top: 0;
+    right: 0;
+    visibility: visible;
+    display: block;
+    z-index: 100;
+} */
+
+

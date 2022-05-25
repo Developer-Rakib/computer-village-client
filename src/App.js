@@ -9,7 +9,6 @@ import Footer from './Pages/Shared/Footer';
 import Purchase from './Pages/Purchase/Purchase';
 import RequireAuth from './Pages/Shared/RequireAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import About from './Pages/About/About';
 import MyOrder from './Pages/Dashboard/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
@@ -19,6 +18,8 @@ import ManageProduct from './Pages/Dashboard/ManageParts';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import RequireAdmin from './Pages/Shared/RequireAdmin';
 import RequireUser from './Pages/Shared/RequireUser';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
           <Route path='manageProduct' element={<RequireAdmin><ManageProduct></ManageProduct></RequireAdmin>} ></Route>
           <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>} ></Route>
         </Route>
-        <Route path='/about' element={<About></About>} ></Route>
+        <Route path='/myPortfolio' element={<MyPortfolio></MyPortfolio>} ></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>} ></Route>
         <Route path='/login' element={<Login></Login>} ></Route>
         <Route path='/signUp' element={<SignUp></SignUp>} ></Route>
       </Routes>
