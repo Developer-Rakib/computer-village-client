@@ -13,7 +13,6 @@ const NewsLetter = () => {
                     <button style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2.5 ml-[-40px]">Subscribe</button>
                     </div>
             </div>
-
         </div>
     );
 };
