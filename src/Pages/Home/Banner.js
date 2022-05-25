@@ -2,6 +2,7 @@ import React from 'react';
 import banner from '../../img/banner3.jpg'
 const Banner = () => {
     return (
+        
         <div style={{backgroundImage:`url(${banner})`, height:"90vh", backgroundSize:'cover', backgroundRepeat:"no-repeat", backgroundPosition:'center'}} className='flex items-center mt-[66px]'>
             <div className='Container'>
                 <div className='text-left w-8/12'>
