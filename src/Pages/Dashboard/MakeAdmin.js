@@ -81,7 +81,7 @@ const MakeAdmin = () => {
                                         <th scope="row" class="px-3 sm:pr-0 sm:pl-8 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">
                                             {i + 1}
                                         </th>
-                                        <td class="py-2 text-[13px] sm:py-4">
+                                        <td class="py-2 text-[11px] sm:text-[13px] sm:py-4">
                                             {user.email}
                                         </td>
                                         <td
@@ -89,12 +89,12 @@ const MakeAdmin = () => {
                                             {
                                                 user?.roll !== 'admin' && <button
                                                     onClick={makeAdmin}
-                                                    class="h-6 px-3 uppercase bg-green-400 border-none hover:bg-green-600 rounded-full text-white">Make Admin</button>
+                                                    class="h-5 sm:h-6  sm:px-3 uppercase bg-green-400 border-none hover:bg-green-600 rounded-full text-white">Make Admin</button>
                                             }
                                         </td>
                                         <td
                                             onClick={deleteAdmin} class="py-2 text-[13px] sm:py-4 text-center">
-                                            <button class="h-6 px-3 uppercase bg-red-500 border-none  hover:bg-red-800 rounded-full text-white">Delete Admin</button>
+                                            <button class="h-5 sm:h-6  sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-800 rounded-full text-white">Delete Admin</button>
                                         </td>
                                     </tr>
                                 )

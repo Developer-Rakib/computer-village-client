@@ -76,7 +76,7 @@ const MyOrder = () => {
                             <th scope="col" class="py-2 text-center sm:py-3">
                                 Quanity
                             </th>
-                            <th scope="col" class="py-2 text-center sm:py-3">
+                            <th scope="col" class="py-2 w-40 text-center sm:py-3">
                                 Payment
                             </th>
                         </tr>
@@ -87,11 +87,11 @@ const MyOrder = () => {
 
                                 return (
                                     <tr key={order._id} class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-                                        <th scope="row" class="pl-3 pr-3 sm:pr-0 sm:pl-5 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">
+                                        <th scope="row" class="pl-2 pr-0 sm:pr-0 sm:pl-5 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">
                                             {i + 1}
                                         </th>
                                         <td class="py-2 w-60  text-[13px] sm:py-4">
-                                            {order.name}
+                                            {order.name.slice(0, 40)}
                                         </td>
                                         <td class="py-2 text-[13px]  text-center sm:py-4">
                                             {order.unitPrice}
@@ -112,7 +112,7 @@ const MyOrder = () => {
                                                 :
                                                 <>
                                                     <p className='text-success'>Paid, Trans ID: </p>
-                                                    <p className='text-success'>{order?.transectionId}</p>
+                                                    <p className='text-success sm:w-auto w-40'>{order?.transectionId}</p>
                                                 </>
                                             }
                                         </td>

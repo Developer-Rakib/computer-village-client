@@ -22,7 +22,7 @@ const MyProfile = () => {
     const { cuntry, education, linkedinProfile, number, streetAddress } = profile?.data
 
     return (
-        <div className=''>
+        <div className='pb-10 sm:py-0'>
             <div class="bg-white w-11/12 mx-auto  shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-4 sm:px-6">
                     <h3 class="text-2xl leading-6 font-medium text-primary">My Information</h3>
@@ -58,7 +58,7 @@ const MyProfile = () => {
                     </dl>
                 </div>
             </div>
-            <div className='text-right mt-5 mr-3'>
+            <div className='text-center sm:text-right mt-5 mr-3'>
                 <label
                     onClick={() => setMyinfoModal(true)}
                     for="profile-modal"

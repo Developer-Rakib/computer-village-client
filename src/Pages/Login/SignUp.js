@@ -64,7 +64,7 @@ const SignUp = () => {
     }
     return (
         <div className='mt-[64px] py-16  '>
-            <div style={{ boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" }} className='rounded-md w-4/12 mx-auto py-14'>
+            <div style={{ boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" }} className='rounded-md w-11/12 sm:w-4/12 mx-auto py-14'>
                 <h3 className="text-4xl  font-bold pb-5 text-center">Sign Up</h3>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-9/12 mx-auto">
 

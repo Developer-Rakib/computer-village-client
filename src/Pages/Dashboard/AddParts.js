@@ -50,9 +50,9 @@ const AddParts = () => {
 
     }
     return (
-        <div className=''>
-            <h2 className="text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Parts</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-7/12 mx-auto">
+        <div className='mb-5'>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Parts</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-11/12 sm:w-7/12 mx-auto">
 
                 <input className='input input-bordered input-md' placeholder='Name' {...register("name", {
                     required: {
@@ -65,9 +65,9 @@ const AddParts = () => {
                 </label>
 
 
-                <div className='flex flex-wrap justify-between'>
-                    <div className='sm:w-6/12 '>
-                        <input className='input input-bordered input-md px-5' placeholder='Price'
+                <div className='sm:flex  justify-between'>
+                    <div className='sm:w-6/12 w-full'>
+                        <input className='input input-bordered w-ful input-md sm:px-5' placeholder='Price'
                             type={'number'}
                             {...register("price", {
                                 required: {
@@ -81,8 +81,8 @@ const AddParts = () => {
 
                         </label>
                     </div>
-                    <div className='sm:w-6/12'>
-                        <input className='input input-bordered input-md px-5' placeholder='Available Quantity'
+                    <div className='sm:w-6/12 w-full'>
+                        <input className='input input-bordered input-md sm:px-5' placeholder='Available Quantity'
                             type={'number'}
                             {...register("availableQuantity", {
                                 required: {

@@ -44,7 +44,7 @@ const AddReview = () => {
     return (
         <div className=''>
             <h2 className="text-3xl font-bold mb-5 border-b-4 inline-block pb-1 px-5 border-primary text-center">Add A Review</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-7/12 mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-11/12 sm:w-7/12 mx-auto">
 
                 <input className='input input-bordered input-md' placeholder='Name' {...register("name", {
                     required: {
@@ -82,16 +82,6 @@ const AddReview = () => {
                 </label>
 
 
-                {/* 
-                <input type={'file'} className='mt- ' {...register("img", {
-                    required: {
-                        value: true,
-                        message: 'image is Required'
-                    }
-                })} />
-                <label className="label">
-                    {errors.img?.type === 'required' && <span className="label-text-alt text-red-500">{errors.img.message}</span>}
-                </label> */}
 
 
                 <textarea className='input h-32 input-bordered input-md' placeholder='Description' {...register("Description", {
