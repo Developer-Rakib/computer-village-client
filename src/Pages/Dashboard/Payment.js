@@ -18,7 +18,7 @@ const Payment = () => {
     // const [order?.data, setOrder]= useState({})
     const { id } = useParams()
     const { isLoading, error, data: order, refetch } = useQuery('order', () =>
-        axiosPrivate.get(`http://localhost:5000/order/${id}`)
+        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/order/${id}`)
     )
     // console.log(order);
     if (isLoading) {

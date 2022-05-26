@@ -16,7 +16,7 @@ const CheckoutForm = ({ order }) => {
     // console.log(order);
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://shielded-waters-86658.herokuapp.com/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -73,14 +73,15 @@ const CheckoutForm = ({ order }) => {
                 },
             },
         );
+        setProccesing(false)
         if (intentError) {
-            setProccesing(false)
+
             console.log(intentError);
             setError(intentError?.message)
             setProccesing(false)
         }
         else {
-            setProccesing(false)
+            // setProccesing(false)
             console.log(paymentIntent);
             setSuccess(paymentIntent.id)
             setError("")
@@ -89,9 +90,11 @@ const CheckoutForm = ({ order }) => {
                 orderId: order?._id,
                 transectionId: paymentIntent.id
             }
-            axiosPrivate.patch(`http://localhost:5000/order/${order?._id}`, payment)
+            axiosPrivate.patch(`https://shielded-waters-86658.herokuapp.com/order/${order?._id}`, payment)
                 .then(data => {
                     console.log(data.data);
+                    event.target.value.reset()
+
                 })
 
 
@@ -119,9 +122,13 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button type="submit" disabled={!stripe || !clientSecret} style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5`}>
-                    Pay
-                </button>
+                {
+                    proccesing ? <MiniLoader></MiniLoader>
+                        :
+                        <button type="submit" disabled={!stripe || !clientSecret} style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5`}>
+                            Pay
+                        </button>
+                }
                 {
                     error && <p className="label-text-alt ml-2 mt-1 text-red-500">{error}</p>
                 }
@@ -131,31 +138,7 @@ const CheckoutForm = ({ order }) => {
             </form>
 
 
-            {/* <form  className='sm:pl-16 sm:w-auto w-11/12 mx-auto sm:mx-0 text-left'>
-                        <div class="relative z-0  w-full mb-6 group">
-                            <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" readOnly disabled value='' />
-                            <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
-                        </div>
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="email" name="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" readOnly disabled  />
-                            <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
-                        </div>
 
-
-
-                        <div class="grid xl:grid-cols-2 xl:gap-6">
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="number" name="phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" />
-                                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
-                            </div>
-
-                        </div>
-                        <div className=' mb-3 sm:mb-0'>
-                            <button
-                                type='submit' style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-10 py-1.5 sm:py-2`}>Purchase</button>
-
-                        </div>
-                    </form> */}
         </div>
     );
 };

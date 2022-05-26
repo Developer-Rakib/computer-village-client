@@ -21,20 +21,20 @@ const AddReview = () => {
 
         // console.log(data);
         const review = {
-            name : data.name,
-            review : data.Description,
-            rating : data.rating,
-            img : user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
+            name: data.name,
+            review: data.Description,
+            rating: data.rating,
+            img: user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
         }
         // console.log(review);
-        axiosPrivate.post(`http://localhost:5000/reviews`, review)
-        .then(data => {
-            console.log(data.data);
-            if (data.data.insertedId) {
-                reset()
-                toast.success(`Your Review Succesfully Posted`)
-            }
-        })
+        axiosPrivate.post(`https://shielded-waters-86658.herokuapp.com/reviews`, review)
+            .then(data => {
+                console.log(data.data);
+                if (data.data.insertedId) {
+                    reset()
+                    toast.success(`Your Review Succesfully Posted`)
+                }
+            })
 
 
     }
@@ -51,38 +51,38 @@ const AddReview = () => {
                         value: true,
                         message: 'Name is Required'
                     }
-                })}  value={user.displayName}/>
+                })} value={user.displayName} />
                 <label className="label">
                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                 </label>
 
-                <input className='input input-bordered input-md' placeholder='Rating' 
-                type={'number'}
+                <input className='input input-bordered input-md' placeholder='Rating'
+                    type={'number'}
                     {...register("rating", {
                         required: {
                             value: true,
                             message: 'Rating is Required'
                         },
-                        
+
                         maxLength: {
                             value: 1,
                             message: 'please enter 1 number of rating' // JS only: <p>error message</p> TS only support string
-                          },
-                          max: {
+                        },
+                        max: {
                             value: 5,
                             message: 'please rate 0 - 5' // JS only: <p>error message</p> TS only support string
-                          }
+                        }
 
                     })} />
                 <label className="label">
                     {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
                     {errors.rating?.type === 'max' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
                     {errors.rating?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
-                    
+
                 </label>
-                
-                
-{/* 
+
+
+                {/* 
                 <input type={'file'} className='mt- ' {...register("img", {
                     required: {
                         value: true,
@@ -94,7 +94,7 @@ const AddReview = () => {
                 </label> */}
 
 
-                <textarea className='input h-32 input-bordered input-md'  placeholder='Description' {...register("Description", {
+                <textarea className='input h-32 input-bordered input-md' placeholder='Description' {...register("Description", {
                     required: {
                         value: true,
                         message: 'Description is Required'

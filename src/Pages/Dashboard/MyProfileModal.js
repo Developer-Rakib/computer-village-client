@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 
-const MyProfileModal = ({ setMyinfoModal, profile , refetch}) => {
-    const {cuntry, education, linkedinProfile, number, streetAddress} = profile;
+const MyProfileModal = ({ setMyinfoModal, profile, refetch }) => {
+    const { cuntry, education, linkedinProfile, number, streetAddress } = profile;
     // console.log(profile);
     const [user, loading] = useAuthState(auth);
     const handleInfoSave = (e) => {
@@ -21,7 +21,7 @@ const MyProfileModal = ({ setMyinfoModal, profile , refetch}) => {
             linkedinProfile: `${e.target.linkdedin.value || linkedinProfile}`
         }
         // console.log(profile);
-        axiosPrivate.put(`http://localhost:5000/profile/${user?.email}`, profile)
+        axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/profile/${user?.email}`, profile)
             .then(data => {
                 console.log(data.data);
                 if ((data.data.matchedCount || data.data.upsertedCount) > 0) {

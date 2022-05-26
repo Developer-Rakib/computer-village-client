@@ -8,7 +8,7 @@ const AddParts = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imgStorage_key = `337d76e7a5799a6aeebe82688b06e092`
     const onSubmit = async data => {
-        
+
         const img = data.img[0];
         const formData = new FormData();
         formData.append('image', img);
@@ -22,15 +22,15 @@ const AddParts = () => {
                 if (result.success) {
                     const imgUrl = result.data.url;
                     const part = {
-                        name : data.name,
-                        price : data.price,
-                        description : data.description,
-                        minimumOrderQuanity : data.minimunOrderQuantity,
-                        availableQuanity : data.availableQuantity,
+                        name: data.name,
+                        price: data.price,
+                        description: data.description,
+                        minimumOrderQuanity: data.minimunOrderQuantity,
+                        availableQuanity: data.availableQuantity,
                         img: imgUrl
                     }
                     console.log(part);
-                    axiosPrivate.post(`http://localhost:5000/part`, part)
+                    axiosPrivate.post(`https://shielded-waters-86658.herokuapp.com/part`, part)
                         .then(data => {
                             // console.log(data.data.success);
                             // console.log(data.data);

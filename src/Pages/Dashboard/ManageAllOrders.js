@@ -8,11 +8,12 @@ import toast from 'react-hot-toast';
 
 const ManageAllOrders = () => {
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        axiosPrivate.get("http://localhost:5000/orders")
+        axiosPrivate.get("https://shielded-waters-86658.herokuapp.com/orders")
 
 
     )
 
+    // console.log(orders);
     const hnadleDelete = (id, name) => {
         console.log(id);
 
@@ -26,7 +27,7 @@ const ManageAllOrders = () => {
             confirmButtonText: 'Yes, Canceled Order!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPrivate.delete(`http://localhost:5000/order/${id}`)
+                axiosPrivate.delete(`https://shielded-waters-86658.herokuapp.com/order/${id}`)
                     .then(data => {
                         console.log(data.data);
                         if (data.data.deletedCount > 0) {
@@ -44,6 +45,22 @@ const ManageAllOrders = () => {
 
             }
         })
+    }
+    const handleShip = (id, name) => {
+        // console.log(name);
+
+
+        axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/orderShip/${id}`)
+            .then(data => {
+                console.log(data.data);
+                if (data?.data.acknowledged) {
+                    toast.success(`${name} has been Successfully Shipped!`)
+                    refetch()
+                }
+            }).catch(error => {
+                console.log(error.response);
+
+            })
     }
     if (isLoading) {
         return <Loader></Loader>
@@ -94,25 +111,39 @@ const ManageAllOrders = () => {
                                             ${order.unitPrice}
                                         </td>
                                         <td class="py-2 text-[13px] text-center sm:py-4">
-                                            <button
-                                                onClick={() => hnadleDelete(order._id, order.name)}
-                                                className='btn mr-1 btn-xs bg-primary text-white border-none'>Ship</button>
 
-                                        </td>
-                                        <td class="py-2 text-[13px] text-center sm:py-4">
-                                            {!order.paid ?
-                                                <>
-                                                    <button
-                                                        onClick={() => hnadleDelete(order._id, order.name)}
-                                                        className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
-                                                    <p className='text-success'>Unpaid</p></>
-                                                :
-                                                <p className='text-success'>Paid</p>
+                                            {!order.paid &&
 
+                                                <p className='text-red-500'>Unpaid</p>
 
 
 
                                             }
+                                            {
+                                                (!order.shipped && order.paid) && <p className='text-green-500'>Pending</p>
+                                            }
+                                            {
+                                                order.shipped && <p className='text-green-700'>Paid</p>
+                                            }
+
+                                        </td>
+                                        <td class="py-2 text-[13px] text-center sm:py-4">
+                                            {!order.paid &&
+
+                                                <button
+                                                    onClick={() => hnadleDelete(order._id, order.name)}
+                                                    className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>}
+
+
+
+                                            {(!order.shipped && order.paid) && <button
+                                                onClick={() => handleShip(order._id, order.name)}
+                                                className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Ship</button>
+                                            }
+                                            {
+                                                order.shipped && <p className='text-green-700'>Sipped</p>
+                                            }
+
                                         </td>
                                     </tr>
                                 )
@@ -123,7 +154,7 @@ const ManageAllOrders = () => {
                 </table>
             </div>
 
-        </div>
+        </div >
     );
 };
 

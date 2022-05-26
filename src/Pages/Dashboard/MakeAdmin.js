@@ -9,7 +9,7 @@ import Loader from '../Shared/Loader';
 const MakeAdmin = () => {
     // const [user, loading] = useAuthState(auth);
     const { isLoading, error, data: users, refetch } = useQuery('users', () =>
-        axiosPrivate.get(`http://localhost:5000/users`)
+        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/users`)
     )
     // console.log(users?.data);
 
@@ -19,7 +19,7 @@ const MakeAdmin = () => {
     // }
     return (
         <div className='sm:px-10 px-2 pb-5'>
-             <h5 className="text-lg text-left font-bold  mb-2 text-primary">Make Admin</h5>
+            <h5 className="text-lg text-left font-bold  mb-2 text-primary">Make Admin</h5>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -43,7 +43,7 @@ const MakeAdmin = () => {
                             users?.data?.map((user, i) => {
 
                                 const makeAdmin = () => {
-                                    axiosPrivate.put(`http://localhost:5000/user/makeAdmin/${user?.email}`)
+                                    axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/user/makeAdmin/${user?.email}`)
                                         .then(data => {
                                             console.log(data.data);
                                             if (data?.data.acknowledged) {
@@ -60,7 +60,7 @@ const MakeAdmin = () => {
                                 }
 
                                 const deleteAdmin = () => {
-                                    axiosPrivate.put(`http://localhost:5000/user/deleteAdmin/${user?.email}`)
+                                    axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/user/deleteAdmin/${user?.email}`)
                                         .then(data => {
                                             console.log(data.data);
                                             if (data?.data.acknowledged) {
@@ -93,7 +93,7 @@ const MakeAdmin = () => {
                                             }
                                         </td>
                                         <td
-                                        onClick={deleteAdmin} class="py-2 text-[13px] sm:py-4 text-center">
+                                            onClick={deleteAdmin} class="py-2 text-[13px] sm:py-4 text-center">
                                             <button class="h-6 px-3 uppercase bg-red-500 border-none  hover:bg-red-800 rounded-full text-white">Delete Admin</button>
                                         </td>
                                     </tr>

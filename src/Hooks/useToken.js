@@ -1,13 +1,13 @@
 import axios from "axios"
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 const useToken = (user) => {
     const [token, setToken] = useState(null)
-    useEffect(()=>{
+    useEffect(() => {
         if (user) {
             if (user) {
                 // console.log(user?.user.email);
-                axios.put(`http://localhost:5000/user/${user.user.email}`, user?.user.email)
+                axios.put(`https://shielded-waters-86658.herokuapp.com/user/${user.user.email}`, user?.user.email)
                     .then(data => {
                         if (data.data.token) {
                             // console.log(data.data.token);
@@ -18,7 +18,7 @@ const useToken = (user) => {
                     })
             }
         }
-    },[user])
+    }, [user])
     return [token, setToken];
 }
 export default useToken;

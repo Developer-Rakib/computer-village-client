@@ -6,7 +6,7 @@ import Review from './Review';
 
 const Reviews = () => {
     const { isLoading, error, data: reviews } = useQuery('reviews', () =>
-        axios.get('http://localhost:5000/reviews')
+        axios.get('https://shielded-waters-86658.herokuapp.com/reviews')
     )
 
     if (isLoading) {

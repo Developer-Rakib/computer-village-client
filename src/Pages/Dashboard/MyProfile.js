@@ -11,7 +11,7 @@ const MyProfile = () => {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, error, data: profile, refetch } = useQuery('profile', () =>
-        axiosPrivate.get(`http://localhost:5000/profile/${user?.email}`)
+        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/profile/${user?.email}`)
     )
     // console.log(error);
     if (isLoading || loading) {
@@ -19,7 +19,7 @@ const MyProfile = () => {
     }
     // console.log(profile.data);
 
-    const { cuntry ,education, linkedinProfile, number, streetAddress} = profile?.data
+    const { cuntry, education, linkedinProfile, number, streetAddress } = profile?.data
 
     return (
         <div className=''>
@@ -67,9 +67,9 @@ const MyProfile = () => {
 
             {
                 myInfoModal && <MyProfileModal
-                refetch={refetch}
-                profile={profile?.data}
-                setMyinfoModal={setMyinfoModal}></MyProfileModal>
+                    refetch={refetch}
+                    profile={profile?.data}
+                    setMyinfoModal={setMyinfoModal}></MyProfileModal>
             }
 
 
