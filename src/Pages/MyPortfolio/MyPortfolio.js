@@ -7,7 +7,7 @@ import Skills from './Skills';
 
 const MyPortfolio = () => {
     return (
-        <div className=' mt-[66px] bg-black text-white'>
+        <div className=' mt-[60px] sm:mt-[66px] bg-black text-white'>
             <PortfolioBanner></PortfolioBanner>
             <div className='py-10 Container'>
                 <h1 className="text-4xl border-b-4  mb-10 mt-4 border-primary inline-block">Skills</h1>

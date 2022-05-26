@@ -3,7 +3,7 @@ import banner from '../../img/banner3.jpg'
 const Banner = () => {
     return (
         
-        <div style={{backgroundImage:`url(${banner})`, height:"90vh", backgroundSize:'cover', backgroundRepeat:"no-repeat", backgroundPosition:'center'}} className='flex items-center mt-[60px]'>
+        <div style={{backgroundImage:`url(${banner})`, height:"90vh", backgroundSize:'cover', backgroundRepeat:"no-repeat", backgroundPosition:'center'}} className='flex items-center mt-[60px] sm:mt-[66px]'>
             <div className='Container'>
                 <div className='sm:text-left sm:w-8/12'>
                     <h1 className="text-4xl sm:text-7xl text-primary font-bold">Computer Village</h1>
