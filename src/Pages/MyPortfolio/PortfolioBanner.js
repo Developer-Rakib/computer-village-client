@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const PortfolioBanner = () => {
     return (
-        <div className='Container flex-wrap py-10 sm:py-0 flex items-center justify-center h-[90vh]'>
+        <div className='Container flex-wrap sm:flex-nowrap py-10 sm:py-0 flex items-center justify-center h-[90vh]'>
                 <div className='sm:text-left w-full sm:w-7/12'>
                     <h1 style={{ fontFamily: "font-family: 'Roboto Slab', serif;" }} className="text-3xl sm:text-5xl text-primary font-bold">Md Tazul Islam Rakib</h1>
                     <p style={{ fontFamily: 'Open Sans,sans-serif' }} className='italic  py-4'>

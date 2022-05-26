@@ -18,7 +18,7 @@ const NewsLetter = () => {
                     <p style={{ fontFamily: 'Open Sans,sans-serif' }} className='italic text-white sm:text-base text-sm py-2'>Subscribe our newsletter and all latest news of our
                         latest product, promotion and offers </p>
                     <form onSubmit={handleSubmit} style={{ fontFamily: 'Open Sans,sans-serif' }} >
-                        <input className='h-10 sm:h-12 w-7/12 px-5 mx-auto border-2 bg-inherit rounded-full' type="email" name="email" id="" placeholder='Enter Email' required />
+                        <input className='h-10 sm:h-12 w-7/12 sm:w-6/12 px-5 mx-auto border-2 bg-inherit rounded-full' type="email" name="email" id="" placeholder='Enter Email' required />
                         <button type='submit' style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-32 sm:w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-1.5 sm:py-2.5 ml-[-40px]">Subscribe</button>
                     </form>
                 </div>

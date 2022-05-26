@@ -50,9 +50,10 @@ const Header = () => {
                     {
                         user && <>
                             <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/dashboard"}>Dashboard</NavLink>
-                            <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/myPortfolio"}>My Portfolio</NavLink>
+                            
                         </>
                     }
+                    <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/myPortfolio"}>My Portfolio</NavLink>
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/blogs"}>Blogs</NavLink>
 
                     {user ?

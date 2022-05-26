@@ -6,7 +6,7 @@ import { RiCustomerService2Fill } from 'react-icons/ri';
 
 const BussinesSummury = () => {
     return (
-        <div className='flex justify-evenly flex-wrap Container'>
+        <div className='flex justify-evenly flex-wrap sm:flex-nowrap Container'>
             <div  style={{fontFamily:'Open Sans', boxShadow:'#f15048 0px 1px 4px'}} className='flex w-11/12 sm:w-[370px] h-24 px-6 sm:h-auto sm:px-6 py-6 rounded-xl m-4 sm:m-2 justify-center items-center'>
                 <FaTools className='text-primary text-5xl'></FaTools>
                 <h1 className="text-2xl sm:text-3xl ml-3">50+ Parts</h1>

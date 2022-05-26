@@ -4,13 +4,13 @@
  [https://computer-village-c6e02.firebaseapp.com/](https://computer-village-c6e02.firebaseapp.com/) 
 
 ### My Project feature, and functionality :-
--    
--   these are: Manage Inventory, Add Item, My Item, These will not show without the user logging in
--   In Home page : Banner, inventory items, footer, and extra two section, these are : revirews section and contact section,
--   Each inventory item has an update button, clicking to win will take you to a route called Inventory Details, where the item quantity can be updated.  And this route is protected,
--   There will be all items in the route called Manage Items, where the user can delete the item if he wants,
--   Users can add items if they want in a route called Add Items, which will show the managed items in the route.
--   In the route called My Item, the user will only see the item he has added
+-   in website 5 pages: home, my porfolio, blogs, dashboard, login
+-   in Home 6 section : parts, review, bussiness summary, newsletter, ads section
+-   in dashboard total 5 page, in this 2 routes : 1. add review, thare in user can post her review, and 2. my orders, thare in user see her orders list, and can manage in,
+-   and 4 page for admin, 1. manage all order, thare in admin can manage all orders of users, 2. manage product, thare in admin can manage all product, 3. add product, thare in admin can post product, 4. make admin, thare in admin can manage admins
+-   and 1 route in dashboard for alls, this is (my profile) , every user can see her info in this page, and can update.
+-   in My Portfolio page about me, and my skills
+-   in blogs page, 5 quistion and ans.
 
 ### Descripton 
 My project is about Computer parts Manufacturer, where different types of computer parts are kept in stock, 
