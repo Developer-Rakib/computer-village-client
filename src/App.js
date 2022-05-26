@@ -21,6 +21,7 @@ import RequireUser from './Pages/Shared/RequireUser';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Blogs from './Pages/Blogs/Blogs';
 import Payment from './Pages/Dashboard/Payment';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>} ></Route>
         <Route path='/login' element={<Login></Login>} ></Route>
         <Route path='/signUp' element={<SignUp></SignUp>} ></Route>
+        <Route path={'*'} element={<NotFound></NotFound>} ></Route>
       </Routes>
       <Footer></Footer>
     </div>

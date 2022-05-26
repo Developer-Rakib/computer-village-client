@@ -13,30 +13,16 @@ const MyOrder = () => {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate()
 
-    const { isLoading, error, data: orders, refetch } = useQuery('orders', () => 
-    axiosPrivate.get(`http://localhost:5000/orders/${user?.email}`)
+    const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
+        axiosPrivate.get(`http://localhost:5000/orders/${user?.email}`)
     )
-    // console.log(error);
-    // useEffect(()=>{
-    //     try {
-    //         axiosPrivate.get(`http://localhost:5000/orders/${user?.email}`)
-    //     .then(data =>{
-    //         console.log(data.data);
-    //         setOrders(data.data)
 
-    //     })
-    //     .catch(error=>{
-    //         console.log(error);
-    //     })
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // },[user])
-    if ( isLoading || loading) {
+    console.log(orders);
+    if (isLoading || loading) {
         return <Loader></Loader>
     }
 
-    
+
     const hnadleDelete = (id, name) => {
         console.log(id);
 
@@ -70,7 +56,7 @@ const MyOrder = () => {
         })
     }
 
-    
+
     return (
         <div className='sm:px-10 px-2 pb-5'>
             <h5 className="text-lg text-left font-bold  mb-2 text-primary">My Orders</h5>
@@ -98,6 +84,7 @@ const MyOrder = () => {
                     <tbody>
                         {
                             orders.data.map((order, i) => {
+
                                 return (
                                     <tr key={order._id} class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                                         <th scope="row" class="pl-3 pr-3 sm:pr-0 sm:pl-5 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]">
@@ -113,17 +100,20 @@ const MyOrder = () => {
                                             {order.quanity}
                                         </td>
                                         <td class="py-2 text-[13px] text-center sm:py-4">
-                                            {!order.pay ?
+                                            {!order.paid ?
                                                 <>
                                                     <button
                                                         onClick={() => hnadleDelete(order._id, order.name)}
                                                         className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
                                                     <button
-                                                    onClick={()=>navigate(`/payment/${order._id}`)}
-                                                     className='btn btn-xs bg-success text-white border-none'>Pay</button>
+                                                        onClick={() => navigate(`/payment/${order._id}`)}
+                                                        className='btn btn-xs bg-success text-white border-none'>Pay</button>
                                                 </>
                                                 :
-                                                <p className='text-success'>Paid</p>
+                                                <>
+                                                    <p className='text-success'>Paid, Trans ID: </p>
+                                                    <p className='text-success'>{order?.transectionId}</p>
+                                                </>
                                             }
                                         </td>
                                     </tr>

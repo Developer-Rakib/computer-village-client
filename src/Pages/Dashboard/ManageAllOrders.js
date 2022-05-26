@@ -51,7 +51,7 @@ const ManageAllOrders = () => {
 
     return (
         <div className='sm:px-10 px-2 pb-5'>
-             <h5 className="text-lg text-left font-bold  mb-2 text-primary">Mange All Orders</h5>
+            <h5 className="text-lg text-left font-bold  mb-2 text-primary">Mange All Orders</h5>
             <div class="relative  overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -69,7 +69,7 @@ const ManageAllOrders = () => {
                                 Total Price
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
-                                Quanity
+                                Status
                             </th>
                             <th scope="col" class="py-2 text-center sm:py-3">
                                 Payment
@@ -97,13 +97,18 @@ const ManageAllOrders = () => {
                                             <button
                                                 onClick={() => hnadleDelete(order._id, order.name)}
                                                 className='btn mr-1 btn-xs bg-primary text-white border-none'>Ship</button>
-                                            <p className='text-success'>Unpaid</p>
+
                                         </td>
                                         <td class="py-2 text-[13px] text-center sm:py-4">
-                                            {!order.pay &&
-                                                <button
-                                                    onClick={() => hnadleDelete(order._id, order.name)}
-                                                    className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
+                                            {!order.paid ?
+                                                <>
+                                                    <button
+                                                        onClick={() => hnadleDelete(order._id, order.name)}
+                                                        className='btn mr-1 btn-xs bg-red-500 text-white border-none'>Cancel</button>
+                                                    <p className='text-success'>Unpaid</p></>
+                                                :
+                                                <p className='text-success'>Paid</p>
+
 
 
 
