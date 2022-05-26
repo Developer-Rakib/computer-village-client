@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Name of website : [Computer Village](https://computer-village-c6e02.firebaseapp.com/) 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Link :
+ [https://computer-village-c6e02.firebaseapp.com/](https://computer-village-c6e02.firebaseapp.com/) 
 
-## Available Scripts
+### My Project feature, and functionality :-
+-    
+-   these are: Manage Inventory, Add Item, My Item, These will not show without the user logging in
+-   In Home page : Banner, inventory items, footer, and extra two section, these are : revirews section and contact section,
+-   Each inventory item has an update button, clicking to win will take you to a route called Inventory Details, where the item quantity can be updated.  And this route is protected,
+-   There will be all items in the route called Manage Items, where the user can delete the item if he wants,
+-   Users can add items if they want in a route called Add Items, which will show the managed items in the route.
+-   In the route called My Item, the user will only see the item he has added
 
-In the project directory, you can run:
+### Descripton 
+My project is about Computer parts Manufacturer, where different types of computer parts are kept in stock, 
+and Used to create this project: 
+- Taiwind and
+- React for Frontend.
+- Nodejs for Backend.
+- MongoDB for Database.
+- Firebase for Authentication.
+- Stripe for payment method 
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Backend
+The crude operation is carried out at the backend with the node's popular framework express, which includes get, put, update, delete, path
+### Backend code link :  [https://github.com/programming-hero-web-course1/manufacturer-website-server-side-Developer-Rakib](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-Developer-Rakib) 

@@ -28,7 +28,7 @@ const Part = ({ part }) => {
             </div>
             <button
             onClick={()=>navigate(`/purchase/${_id}`)}
-             style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-10 py-2">Buy Now</button>
+             style={{fontFamily:'Open Sans, sans-serif', letterSpacing:'2px'}} class="hover:bg-primary transition hover:text-white rounded-full text-primary border border-primary px-8 sm:px-10 py-1.5 sm:py-2">Buy Now</button>
         </div>
     );
 };

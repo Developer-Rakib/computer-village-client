@@ -12,5 +12,10 @@ body {
   width: 82%;
   margin: auto auto;
 }
+@media (max-width:600px) {
+  .Container{
+    width: 90%;
+  }
+}
 
 

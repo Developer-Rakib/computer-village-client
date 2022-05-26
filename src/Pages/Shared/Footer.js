@@ -5,12 +5,12 @@ import smallLogo from '../../img/smallLogo.png';
 const Footer = () => {
     return (
         <>
-            <footer class="footer p-10 bg-neutral text-neutral-content">
-                <div>
+            <footer class="footer  p-10 bg-neutral text-neutral-content">
+                <div className='mx-auto sm:mx-0'>
                     <img src={smallLogo} alt="" />
                     <p>Computer Village<br />A Shop of Parts of Computer</p>
                 </div>
-                <div>
+                <div className=''>
                     <span class="footer-title">Services</span>
                     <Link to={''} class="link link-hover">Branding</Link>
                     <Link to={''} class="link link-hover">Design</Link>
@@ -32,7 +32,7 @@ const Footer = () => {
                 </div>
             </footer>
             <footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300 ">
-            <p className='mx-auto flex'>Copyright © 2022 - All right reserved by <a className='text-primary hover:underline hover:tracking-wide transition-all  ' href="https://github.com/Developer-Rakib">Developer Rakib</a></p>
+            <p className='mx-auto flex flex-col  sm:flex-row'>Copyright © 2022 - All right reserved by <a className='text-primary hover:underline hover:tracking-wide transition-all  ' href="https://github.com/Developer-Rakib">Developer Rakib</a></p>
                 
             </footer>
         </>

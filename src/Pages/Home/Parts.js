@@ -14,8 +14,8 @@ const Parts = () => {
         return <Loader></Loader>
     }
     return (
-        <div className='my-10 sm:px-10'>
-            <h1 className="text-4xl border-b-4 mb-2 mt-4 border-primary inline-block">Products</h1>
+        <div className='my-7 sm:my-10 sm:px-10'>
+            <h1 className="text-3xl sm:text-4xl border-b-4 sm:mb-2 sm:mt-4 border-primary inline-block">Products</h1>
             <div className='flex justify-evenly flex-wrap'>
                 {
                     parts.data.map((part) => <Part
