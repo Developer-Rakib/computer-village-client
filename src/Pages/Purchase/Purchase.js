@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import {  useParams } from 'react-router-dom';
+import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
 import PurchaseModal from './PurchaseModal';
@@ -17,7 +18,7 @@ const Purchase = () => {
     const [user, loading] = useAuthState(auth);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/part/${id}`)
+        axiosPrivate.get(`http://localhost:5000/part/${id}`)
             .then(data => {
                 // console.log(data.data.minimumOrderQuanity);
                 setPart(data.data)
@@ -49,7 +50,7 @@ const Purchase = () => {
             img,
         }
         // console.log(purchaseInfo);
-        axios.post("http://localhost:5000/orders", purchaseInfo)
+        axiosPrivate.post("http://localhost:5000/orders", purchaseInfo)
         .then(data =>{
             if (data.data.insertedId) {
                 toast.success(`${name} Order Succssfully!`)
@@ -83,16 +84,16 @@ const Purchase = () => {
             <div
                 className="flex justify-evenly flex-col-reverse sm:flex-row pt-8 sm:pt-20 w-11/12 sm:container mx-auto">
                 <div className="flex flex-col p-2 sm:p-10 sm:text-left text-center sm:mt-0 mt-3 md:flex-row md:w-8/12  rounded-lg bg-white shadow-lg">
-                    <div className='w-4/12 text-center'>
+                    <div className='w-11/12 mx-auto sm:mx-0 mb-10 sm:mb-0 sm:w-4/12 text-center'>
                         <h2 className=''>{name}</h2>
-                        <img className="w-56  sm:mx-0 mx-auto sm:w-full  sm:h-96 md:h-48 object-cover md:w-56 rounded-t-lg md:rounded-none md:rounded-l-lg" src={img} alt="" />
+                        <img className="w-56  sm:mx-0 mx-auto sm:w-full h-32 sm:h-96 md:h-48 object-cover md:w-56 rounded-t-lg md:rounded-none md:rounded-l-lg" src={img} alt="" />
                         <h2 className=''>Minimum Order Quanity : {minimumOrderQuanity}</h2>
                         <h2 className=''>Stock : {availableQuanity}</h2>
                     </div>
 
 
-                    <form onSubmit={handlePurchase} className='pl-16'>
-                        <div class="relative z-0 w-full mb-6 group">
+                    <form onSubmit={handlePurchase} className='sm:pl-16 sm:w-auto w-11/12 mx-auto sm:mx-0 text-left'>
+                        <div class="relative z-0  w-full mb-6 group">
                             <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required="" readOnly disabled value={user.displayName} />
                             <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
                         </div>
@@ -122,15 +123,15 @@ const Purchase = () => {
                             </div>
 
                         </div>
-                        <div className='flex justify-center'>
+                        <div className='flex justify-center mb-3 sm:mb-0'>
                             <button
                                 disabled={(quanity < minimumOrderQuanity || quanity > availableQuanity) && true}
-                                type='submit' style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={(quanity < minimumOrderQuanity || quanity > availableQuanity) ? `bg-gray-400 text-white rounded-full px-10 py-2 mr-2` : `hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-10 py-2`}>Purchase</button>
+                                type='submit' style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={(quanity < minimumOrderQuanity || quanity > availableQuanity) ? `bg-gray-400 text-white rounded-full  px-6 text-sm sm:text-base sm:px-10 py-1.5 sm:py-2` : `hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-10 py-1.5 sm:py-2`}>Purchase</button>
 
                             <label
                                 onClick={() => setPartDetail(true)}
                                 for="purchase-modal"
-                                style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary px-10 py-2">Details</label>
+                                style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-primary transition hover:text-white rounded-full text-primary border-2 border-primary  px-6 text-sm sm:text-base sm:px-10 py-1.5 sm:py-2">Details</label>
                         </div>
                     </form>
                     {

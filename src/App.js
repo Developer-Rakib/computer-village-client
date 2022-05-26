@@ -20,6 +20,7 @@ import RequireAdmin from './Pages/Shared/RequireAdmin';
 import RequireUser from './Pages/Shared/RequireUser';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Blogs from './Pages/Blogs/Blogs';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>} ></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>} ></Route>
+        <Route path='/payment/:id' element={<RequireAuth><Payment></Payment></RequireAuth>} ></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route path='myOrder' element={<RequireUser><MyOrder></MyOrder></RequireUser>} ></Route>
           <Route path='addReview' element={<RequireUser><AddReview></AddReview></RequireUser>} ></Route>
