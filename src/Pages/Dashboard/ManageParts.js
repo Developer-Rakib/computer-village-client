@@ -9,7 +9,7 @@ import Loader from '../Shared/Loader';
 const ManageParts = () => {
 
     const { isLoading, error, data: parts, refetch } = useQuery('parts', () =>
-        axiosPrivate.get('https://shielded-waters-86658.herokuapp.com/parts')
+        axiosPrivate.get('https://computer-village.onrender.com/parts')
     )
 
     const hnadleDelete = (id, name) => {
@@ -25,7 +25,7 @@ const ManageParts = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPrivate.delete(`https://shielded-waters-86658.herokuapp.com/part/${id}`)
+                axiosPrivate.delete(`https://computer-village.onrender.com/part/${id}`)
                     .then(data => {
                         // console.log(data.data);
                         if (data.data.deletedCount > 0) {

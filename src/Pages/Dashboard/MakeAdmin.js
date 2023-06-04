@@ -9,7 +9,7 @@ import Loader from '../Shared/Loader';
 const MakeAdmin = () => {
     // const [user, loading] = useAuthState(auth);
     const { isLoading, error, data: users, refetch } = useQuery('users', () =>
-        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/users`)
+        axiosPrivate.get(`https://computer-village.onrender.com/users`)
     )
     // console.log(users?.data);
 
@@ -43,7 +43,7 @@ const MakeAdmin = () => {
                             users?.data?.map((user, i) => {
 
                                 const makeAdmin = () => {
-                                    axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/user/makeAdmin/${user?.email}`)
+                                    axiosPrivate.put(`https://computer-village.onrender.com/user/makeAdmin/${user?.email}`)
                                         .then(data => {
                                             console.log(data.data);
                                             if (data?.data.acknowledged) {
@@ -60,7 +60,7 @@ const MakeAdmin = () => {
                                 }
 
                                 const deleteAdmin = () => {
-                                    axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/user/deleteAdmin/${user?.email}`)
+                                    axiosPrivate.put(`https://computer-village.onrender.com/user/deleteAdmin/${user?.email}`)
                                         .then(data => {
                                             console.log(data.data);
                                             if (data?.data.acknowledged) {

@@ -16,7 +16,7 @@ const CheckoutForm = ({ order }) => {
     // console.log(order);
 
     useEffect(() => {
-        fetch("https://shielded-waters-86658.herokuapp.com/create-payment-intent", {
+        fetch("https://computer-village.onrender.com/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -90,7 +90,7 @@ const CheckoutForm = ({ order }) => {
                 orderId: order?._id,
                 transectionId: paymentIntent.id
             }
-            axiosPrivate.patch(`https://shielded-waters-86658.herokuapp.com/order/${order?._id}`, payment)
+            axiosPrivate.patch(`https://computer-village.onrender.com/order/${order?._id}`, payment)
                 .then(data => {
                     console.log(data.data);
                     event.target.value.reset()

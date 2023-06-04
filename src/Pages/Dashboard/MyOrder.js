@@ -14,7 +14,7 @@ const MyOrder = () => {
     const navigate = useNavigate()
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/orders/${user?.email}`)
+        axiosPrivate.get(`https://computer-village.onrender.com/orders/${user?.email}`)
     )
 
     // console.log(orders);
@@ -36,7 +36,7 @@ const MyOrder = () => {
             confirmButtonText: 'Yes, Canceled Order!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPrivate.delete(`https://shielded-waters-86658.herokuapp.com/order/${id}`)
+                axiosPrivate.delete(`https://computer-village.onrender.com/order/${id}`)
                     .then(data => {
                         console.log(data.data);
                         if (data.data.deletedCount > 0) {

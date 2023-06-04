@@ -21,7 +21,7 @@ const MyProfileModal = ({ setMyinfoModal, profile, refetch }) => {
             linkedinProfile: `${e.target.linkdedin.value || linkedinProfile}`
         }
         // console.log(profile);
-        axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/profile/${user?.email}`, profile)
+        axiosPrivate.put(`https://computer-village.onrender.com/profile/${user?.email}`, profile)
             .then(data => {
                 console.log(data.data);
                 if ((data.data.matchedCount || data.data.upsertedCount) > 0) {

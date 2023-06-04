@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const ManageAllOrders = () => {
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        axiosPrivate.get("https://shielded-waters-86658.herokuapp.com/orders")
+        axiosPrivate.get("https://computer-village.onrender.com/orders")
 
 
     )
@@ -27,7 +27,7 @@ const ManageAllOrders = () => {
             confirmButtonText: 'Yes, Canceled Order!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPrivate.delete(`https://shielded-waters-86658.herokuapp.com/order/${id}`)
+                axiosPrivate.delete(`https://computer-village.onrender.com/order/${id}`)
                     .then(data => {
                         console.log(data.data);
                         if (data.data.deletedCount > 0) {
@@ -50,7 +50,7 @@ const ManageAllOrders = () => {
         // console.log(name);
 
 
-        axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/orderShip/${id}`)
+        axiosPrivate.put(`https://computer-village.onrender.com/orderShip/${id}`)
             .then(data => {
                 console.log(data.data);
                 if (data?.data.acknowledged) {

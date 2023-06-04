@@ -18,7 +18,7 @@ const Payment = () => {
     // const [order?.data, setOrder]= useState({})
     const { id } = useParams()
     const { isLoading, error, data: order, refetch } = useQuery('order', () =>
-        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/order/${id}`)
+        axiosPrivate.get(`https://computer-village.onrender.com/order/${id}`)
     )
     // console.log(order);
     if (isLoading) {

@@ -11,7 +11,7 @@ const MyProfile = () => {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, error, data: profile, refetch } = useQuery('profile', () =>
-        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/profile/${user?.email}`)
+        axiosPrivate.get(`https://computer-village.onrender.com/profile/${user?.email}`)
     )
     // console.log(error);
     if (isLoading || loading) {

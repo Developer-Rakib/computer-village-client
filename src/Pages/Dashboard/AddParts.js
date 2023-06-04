@@ -30,7 +30,7 @@ const AddParts = () => {
                         img: imgUrl
                     }
                     console.log(part);
-                    axiosPrivate.post(`https://shielded-waters-86658.herokuapp.com/part`, part)
+                    axiosPrivate.post(`https://computer-village.onrender.com/part`, part)
                         .then(data => {
                             // console.log(data.data.success);
                             // console.log(data.data);

@@ -6,7 +6,7 @@ import Part from './Part';
 
 const Parts = () => {
     const { isLoading, error, data: parts } = useQuery('parts', () =>
-        axios.get('https://shielded-waters-86658.herokuapp.com/parts')
+        axios.get('https://computer-village.onrender.com/parts')
 
     )
 

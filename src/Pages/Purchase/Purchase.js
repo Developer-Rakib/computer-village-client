@@ -18,7 +18,7 @@ const Purchase = () => {
     const [user, loading] = useAuthState(auth);
 
     useEffect(() => {
-        axiosPrivate.get(`https://shielded-waters-86658.herokuapp.com/part/${id}`)
+        axiosPrivate.get(`https://computer-village.onrender.com/part/${id}`)
             .then(data => {
                 // console.log(data.data.minimumOrderQuanity);
                 setPart(data.data)
@@ -50,7 +50,7 @@ const Purchase = () => {
             img,
         }
         // console.log(purchaseInfo);
-        axiosPrivate.post("https://shielded-waters-86658.herokuapp.com/orders", purchaseInfo)
+        axiosPrivate.post("https://computer-village.onrender.com/orders", purchaseInfo)
             .then(data => {
                 if (data.data.insertedId) {
                     toast.success(`${name} Order Succssfully!`)

@@ -27,7 +27,7 @@ const AddReview = () => {
             img: user?.photoURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
         }
         // console.log(review);
-        axiosPrivate.post(`https://shielded-waters-86658.herokuapp.com/reviews`, review)
+        axiosPrivate.post(`https://computer-village.onrender.com/reviews`, review)
             .then(data => {
                 console.log(data.data);
                 if (data.data.insertedId) {
